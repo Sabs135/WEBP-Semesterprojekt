@@ -23,7 +23,7 @@ const FALL_DEATH = 400
 //-------- laden der Bilder bzw. Sprites  ---------/
 loadRoot('https://i.imgur.com/')
 loadSprite('coin', 'wbKxhcd.png')
-loadSprite('evil-shroom', 'KPO3fR9.png')
+loadSprite('ant', 'vbXlL4I.png')
 loadSprite('block', 'LhCBppg.png')   /* Boden */
 loadSprite('brick', 'rLgxPJd.png')   /* vertikale Säule Lvl 2 */
 
@@ -39,7 +39,7 @@ loadSprite('tiles','vSTvkix.png',{
     }
 })
 loadSprite('bubble', 'mHi5rD4.png')
-loadSprite('fledermaus', 'FpYqXiP.png')
+loadSprite('fledermaus', 'AY7h3ZQ.png')
 
 loadSprite('door', '7BzohG3.png')
 
@@ -158,8 +158,8 @@ scene("game", ({ level, score }) => {
 
         '+': [sprite('door'),scale(0.05),origin('center'), 'door'],
 
-        '^': [sprite('evil-shroom'), solid(), 'bad', body()], /*body = fügt gravity dazu*/
-        '/':[sprite('fledermaus'), solid(), scale(0.15), 'tot'],
+        '^': [sprite('ant'), solid(), 'bad', body()], /*body = fügt gravity dazu*/
+        '/':[sprite('fledermaus'), solid(), scale(0.6), 'tot'],
         '%': [sprite('bubble'), solid(), 'blub'],
         
         //--------- Ende Definition der Platzhalter in den Levels ---------//
