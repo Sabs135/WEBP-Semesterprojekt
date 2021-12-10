@@ -23,6 +23,7 @@ const FALL_DEATH = 400
 //-------- laden der Bilder bzw. Sprites  ---------/
 loadRoot('https://i.imgur.com/')
 loadSprite('coin', 'wbKxhcd.png')
+loadSprite('diamond', 'uy91fDA.png')
 loadSprite('ant', 'vbXlL4I.png')
 loadSprite('block', 'LhCBppg.png')   /* Boden */
 loadSprite('brick', 'rLgxPJd.png')   /* vertikale Säule Lvl 2 */
@@ -65,9 +66,9 @@ scene("game", ({ level, score }) => {
             '                                                        ',
             '              $$                                        ',
             '           =====                                        ',
-            '    $  =                                                ',
+            '    $  =                 o                              ',
             '              $$                                        ',
-            '            ^                     ^    +        $$      ',
+            '            ^                     ^    +         o      ',
             '===========================   ============    ==========',],
 
         //----------------------- Ende Lvl 1 -----------------------//
@@ -79,7 +80,7 @@ scene("game", ({ level, score }) => {
             '                                                    ',
             '                                                    ',                 
             '                                                    ',
-            '                                                    ',
+            '                                           o        ',
             '                                                    ',
             '                           $$                       ',
             '            $                             i i       ',
@@ -102,7 +103,7 @@ scene("game", ({ level, score }) => {
             '                                 ==                    ',
             '                   $       ====                        ',
             '     ==        ========                                ',
-            '         ==                                            ',
+            '         ==                                     o      ',
             '                                                       ',
             '               ^    $       ^    ^             $S      ',
             '======================================     =========== ',],
@@ -117,11 +118,11 @@ scene("game", ({ level, score }) => {
             '                                                              ',
             '                                                              ',
             '                  /           +                               ',
-            '                        =    ==      =                        ',
+            '                        =    ==      =       o                ',
             '                                  /          =       ^        ',
             '           ==       =                               =         ',
             '   $ $                                                        ',
-            ' $     $        $     ^               ^$        ^            $',
+            ' $     $        $     ^               ^$        ^         o  $',
             '===========   =   ====    ==    ========    ======    ========',],
 
         //----------------------- Ende Lvl 4 -----------------------//
@@ -134,7 +135,7 @@ scene("game", ({ level, score }) => {
             '                                    ==               ==         =',
             '                                  /                     /       =',
             '                       $                                        =',
-            '                  =   ====    ===                        ==     =',
+            '                  =   ====    ===              o         ==     =',
             '==                                            ==                =',
             '             ==              =                               ====',
             ' $                        $                                     =',
@@ -154,6 +155,7 @@ scene("game", ({ level, score }) => {
 
         '=': [sprite('block'), solid(), scale(0.8)],
         '$': [sprite('coin'), 'coin'],
+        'o': [sprite('diamond'), 'diamond', scale(0.8)],
         'i': [sprite('brick'), solid(), scale(0.8)],
 
         '+': [sprite('door'),scale(0.05),origin('center'), 'door'],
@@ -188,6 +190,12 @@ scene("game", ({ level, score }) => {
     player.collides('coin', (c) => {        /*zählt und zerstört gesammelte Coins*/
         destroy(c)
         scoreLabel.value++  
+        scoreLabel.text = scoreLabel.value
+    })
+
+    player.collides('diamond', (o) => {        /*zählt und zerstört gesammelte Diamonds*/
+        destroy(o)
+        scoreLabel.value++ && scoreLabel.value++  /* Diamonds zählen doppelt! */
         scoreLabel.text = scoreLabel.value
     })
 
