@@ -302,7 +302,10 @@ scene('lose', ({ score}) => {                                                   
     add([text('Game over', 50), origin('center'), pos(width()/2, height()/3)]);      /*zeigt bei Game-Over den Begriff Game over an*/
     add([text('Du hast ' + score + ' Punkte gesammelt', 30), origin('center'), pos(width()/2, height()/2)]);          /*zeigt bei Game-Over den Punktestand an*/
     add([text('Versuch es nochmal', 30), origin('center'), pos(width()/2, height()/1.5)]);
-   
+    /* Klick auf Leertaste -> Start erneut */
+    keyPress('space', () => {
+        go('game', { level: 0, score:0})
+    })
 })
 //--------------------------- Ende Game Over Definitionen ---------------------------//
 
