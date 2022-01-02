@@ -13,7 +13,8 @@ kaboom({
 const MOVE_SPEED = 120 
 const JUMP_FORCE = 360
 let CURRENT_JUMP_FORCE = JUMP_FORCE
-const ENEMY_SPEED = 20
+const ENEMY_SPEED_1 = 20
+const ENEMY_SPEED_2 = 40
 let isJumping = true
 const FALL_DEATH = 400
 
@@ -25,8 +26,10 @@ loadRoot('https://i.imgur.com/')
 loadSprite('coin', 'wbKxhcd.png')
 loadSprite('diamond', 'uy91fDA.png')
 loadSprite('ant', 'vbXlL4I.png')
+loadSprite('mouse', 'O5xgG52.png')
 loadSprite('block', 'LhCBppg.png')   /* Boden */
-loadSprite('brick', 'rLgxPJd.png')   /* vertikale Säule Lvl 2 */
+loadSprite('brick', 'rLgxPJd.png')   /* vertikale Säulen */
+loadSprite('door', '7BzohG3.png')
 
 /* Laden des TileSheets von Rotkäppchen mit verschiedenen Positionen*/
 loadSprite('tiles','vSTvkix.png',{   
@@ -40,10 +43,8 @@ loadSprite('tiles','vSTvkix.png',{
     }
 })
 loadSprite('bubble', 'mHi5rD4.png')
-loadSprite('fledermaus', 'AY7h3ZQ.png')
-
-loadSprite('door', '7BzohG3.png')
-
+loadSprite('bat', 'AY7h3ZQ.png')
+loadSprite('cup', 'YMha7Un.png')
 
 //---------------------------------- Start Scene Game ----------------------------------//
 
@@ -62,14 +63,14 @@ scene("game", ({ level, score }) => {
             '                                                        ',
             '                                                        ',
             '                                                        ',       
+            '              $                                         ',
             '                                                        ',
             '                                                        ',
-            '              $$                                        ',
             '           =====                                        ',
-            '    $  =                 o                              ',
-            '              $$                                 o      ',
-            '            ^                     ^    +                ',
-            '===========================   ============    ==========',],
+            '    $  =                                                ',
+            '              $$                         ==   i  o      ',
+            '            ^                     *  +        i         ',
+            '===========================   ===========     ==========',],
 
         //----------------------- Ende Lvl 1 -----------------------//
         //----------------------- Start Lvl 2 -----------------------//
@@ -83,30 +84,30 @@ scene("game", ({ level, score }) => {
             '                                           o        ',
             '                                                    ',
             '                           $$                       ',
-            '            $                             i i       ',
-            '         ======   =====                 $ i i i  $  ',
+            '            $    ==                       i i       ',
+            '         ======     ===                 $ i i i  $  ',
             '                                      i i i i  i    ',
-            '         ^    $    ^        ^       i i i i i  i  + ',
+            '         ^    $    *        ^       i i i i i  i  + ',
             '=====================     =======  =================',],
 
         //----------------------- Ende Lvl 2 -----------------------//
         //----------------------- Start Lvl 3 -----------------------//
 
         [
-            '                                     /                 ',         
+            '                                 o   /                 ',         
             '                                                       ',
             '                                                     + ',
-            '                                                   === ',             
+            '                                 =                 === ',             
             '                                              ===      ',
             '                                 /         =           ',
             '          /                          =====             ',
-            '                                 ==                    ',
+            '                                ===                    ',
             '                   $       ====                        ',
             '     ==        ========                                ',
             '         ==                                     o      ',
             '                                                       ',
             '               ^    $       ^    ^             $S      ',
-            '======================================     =========== ',],
+            '======================================     =========== ',], 
 
         //----------------------- Ende Lvl 3 -----------------------//
         //----------------------- Start Lvl 4 -----------------------//
@@ -118,28 +119,28 @@ scene("game", ({ level, score }) => {
             '                                                              ',
             '                                                              ',
             '                  /           +              o                ',
-            '                        =    ==      =                        ',
-            '                                  /          =       ^        ',
-            '           ==       =                               =         ',
-            '   $ $                                                    o   ',
-            ' $     $        $     ^               ^$        ^           $',
-            '===========   =   ====    ==    ========    ======    ========',],
+            '                        =    ==    =                          ',
+            '       $                          /     =    =                ',
+            '   $       ==       =                             =           ',
+            '     $                                                    o $ ',
+            '           ^                        $  *                      ',
+            '============  =   ====    ==    ========    ======    ========',],
 
         //----------------------- Ende Lvl 4 -----------------------//
         //----------------------- Start Lvl 5 -----------------------//
 
         [
-            '                                                                 ',    
-            '                                           $                  $ =',        
+            '                               $                            $   ',    
+            '                                                   /            =',        
             '                                         =====             ======',
-            '                                    ==               ==         =',
-            '                                  /                     /       =',
-            '                       $                      o                 =',
+            '             o                      ==           =   ==         =',
+            '                       /                                        =',
+            '                                *             o                 =',
             '                  =   ====    ===                        ==     =',
-            '==                                            ==                =',
-            '             ==              =                               ====',
-            ' $                        $                                     =',
-            '          ^      ^      ===         %$       $             $    =',
+            '==                                            ==     i          =',
+            '             ==           $  =                       i       ====',
+            ' $                                   $               i       o  =',
+            '          ^         =   ===         %         X      i     $    =',
             '===================              =======   ======    ============',],
 
         //----------------------- Ende Lvl 5 -----------------------//
@@ -158,11 +159,14 @@ scene("game", ({ level, score }) => {
         'o': [sprite('diamond'), 'diamond', scale(0.8)],
         'i': [sprite('brick'), solid(), scale(0.8)],
 
-        '+': [sprite('door'),scale(0.05),origin('center'), 'door'],
+        '+': [sprite('door'), scale(0.05), origin('center'), 'door'], /*origin('center') = Icon wird genau auf Ebene positioniert */
+        'X': [sprite('cup'), origin('center'), 'cup'],
 
         '^': [sprite('ant'), solid(), 'bad', body()], /*body = fügt gravity dazu*/
-        '/':[sprite('fledermaus'), solid(), scale(0.6), 'tot'],
+        '*': [sprite('mouse'), solid(), 'bad', scale(1.2), body()],
+        '/': [sprite('bat'), solid(), scale(0.6), 'tot'],
         '%': [sprite('bubble'), solid(), 'blub'],
+
         
         //--------- Ende Definition der Platzhalter in den Levels ---------//
     }
@@ -199,21 +203,21 @@ scene("game", ({ level, score }) => {
         scoreLabel.text = scoreLabel.value
     })
 
-    action('fledermaus', (n) => {   /* kann vermutlich entfernt werden weil doppelt mit 'tot' unten */
+    action('bat', (n) => {   /* kann vermutlich entfernt werden weil doppelt mit 'tot' unten */
     n.move(20, 0)   
 })
 
-    action('bad', (d) => {        /* Pilze: -enemy_speed (x-Achse) damit sie sich nach links bewegen. / y-Achse = 0) */
-        d.move(-ENEMY_SPEED, 0)
+    action('bad', (d) => {        /* Wurm: -enemy_speed (x-Achse) damit sie sich nach links bewegen. / y-Achse = 0) */
+        d.move(-ENEMY_SPEED_1, 0)
     })
     
     action('tot', (a) => {              /* Fledermaus: -enemy_speed (x-Achse) damit sie sich nach links bewegen. / y-Achse = 0) */
-        a.move(-ENEMY_SPEED, 0)
+        a.move(-ENEMY_SPEED_2, 0)
     })
 
     //----------- Start Kollisionen -----------// 
 
-    player.collides('bad', (d) => {       /*wenn man in Pilzli rennt, stirbt man, wenn man drauf hüpft, verschwinden Pilzli*/
+    player.collides('bad', (d) => {       /*wenn man in Boden-Gegner rennt, stirbt man, wenn man drauf hüpft, verschwinden Gegner*/
         if (isJumping) {
             destroy(d)
         } else {
