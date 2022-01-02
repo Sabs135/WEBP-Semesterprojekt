@@ -25,7 +25,9 @@ const FALL_DEATH = 400
 loadRoot('https://i.imgur.com/')
 loadSprite('coin', 'wbKxhcd.png')
 loadSprite('diamond', 'uy91fDA.png')
-loadSprite('ant', 'vbXlL4I.png')
+loadSprite('ant1', 'vbXlL4I.png') /* 2x Ant, damit sie korrekt runterfallen */
+loadSprite('ant2', 'vbXlL4I.png')
+
 loadSprite('mouse', 'O5xgG52.png')
 loadSprite('block', 'LhCBppg.png')   /* Boden */
 loadSprite('brick', 'rLgxPJd.png')   /* vertikale Säulen */
@@ -87,7 +89,7 @@ scene("game", ({ level, score }) => {
             '            $    ==                       i i       ',
             '         ======     ===                 $ i i i  $  ',
             '                                      i i i i  i    ',
-            '         ^    $    *        ^       i i i i i  i  + ',
+            '         ^    $    *        v       i i i i i  i  + ',
             '=====================     =======  =================',],
 
         //----------------------- Ende Lvl 2 -----------------------//
@@ -106,7 +108,7 @@ scene("game", ({ level, score }) => {
             '     ==        ========                                ',
             '         ==                                     o      ',
             '                                                       ',
-            '               ^    $       ^    ^             $S      ',
+            '               ^    $             *            $S     v',
             '======================================     =========== ',], 
 
         //----------------------- Ende Lvl 3 -----------------------//
@@ -162,7 +164,9 @@ scene("game", ({ level, score }) => {
         '+': [sprite('door'), scale(0.05), origin('center'), 'door'], /*origin('center') = Icon wird genau auf Ebene positioniert */
         'X': [sprite('cup'), origin('center'), 'cup'],
 
-        '^': [sprite('ant'), solid(), 'bad', body()], /*body = fügt gravity dazu*/
+        '^': [sprite('ant1'), solid(), 'bad', body()], /*body = fügt gravity dazu*/
+        'v': [sprite('ant2'), solid(), 'bad', body()], /*body = fügt gravity dazu*/
+
         '*': [sprite('mouse'), solid(), 'bad', scale(1.2), body()],
         '/': [sprite('bat'), solid(), scale(0.6), 'tot'],
         '%': [sprite('bubble'), solid(), 'blub'],
@@ -242,6 +246,10 @@ scene("game", ({ level, score }) => {
         })
     })
 
+    player.collides('cup', () => {
+        go('win', { score: scoreLabel.value})
+    })
+
     //----------- Ende Kollisionen -----------// 
 
 
@@ -313,6 +321,17 @@ scene('lose', ({ score}) => {                                                   
 })
 //--------------------------- Ende Game Over Definitionen ---------------------------//
 
+//----------------------------Start Definition Win ---------------------------------//
+scene('win', ({ score}) => {
+    add([text('Du hast gewonnen', 50), origin('center'), pos(width()/2, height()/3)]);
+    add([text('Du hast ' + score + ' Punkte gesammelt', 30), origin('center'), pos(width()/2, height()/2)]);
+    add([text('Willst du noch einmal spielen?', 30), origin('center'), pos(width()/2, height()/1.5)]);
+    /* Klick auf Leertaste -> Start erneut */
+    keyPress('space', () => {
+        go('game', { level: 0, score:0})
+    })
+})
+
+//----------------------------Ende Definition Win ---------------------------------------//
 
 start("game", { level: 0, score:0})
-
