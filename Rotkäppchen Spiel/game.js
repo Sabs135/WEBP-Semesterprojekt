@@ -158,8 +158,8 @@ scene("game", ({ level, score }) => {
 
         //--------- Start Definition der Platzhalter in den Levels ---------//
 
-        '=': [sprite('block'), solid(), scale(0.8)],
-        'i': [sprite('brick'), solid(), scale(0.8)],
+        '=': [sprite('block'), solid(), scale(0.8)],  /* 'solid' weil "festes Element", nicht wie bei coins*/
+        'i': [sprite('brick'), solid(), scale(0.8)],  /* scale : div. Sprites benötigten Grössenanpassung*/
 
         '$': [sprite('coin'), 'coin'],
         'o': [sprite('diamond'), 'diamond', scale(0.8)],
@@ -171,13 +171,14 @@ scene("game", ({ level, score }) => {
         'v': [sprite('ant2'), solid(), 'bad', body()], /*body = fügt gravity dazu*/
 
         '*': [sprite('bear'), solid(), 'bad', scale(1.2), body()],
-        '/': [sprite('bat'), solid(), scale(0.6), 'tot'],
+        '/': [sprite('bat'), solid(), scale(0.6), 'dead'],
 
-        
         //--------- Ende Definition der Platzhalter in den Levels ---------//
     }
 
-    const gameLevel = addLevel(maps[level], levelCfg)       /*maps[level] ist Zugriff auf Aarrays für die Levels*/
+    //--------- Start Level und Score-Definitionen ---------//
+
+    const gameLevel = addLevel(maps[level], levelCfg)       /*maps[level] ist Zugriff auf Arrays für die Levels*/
 
     const scoreLabel = add([
         text(score, 16),
@@ -190,8 +191,12 @@ scene("game", ({ level, score }) => {
 
     add([text('  Punkte, level ' + parseInt(level + 1) + ' von 5', 16), pos(42, 6)])
 
+    //--------- Ende Level und Score-Definitionen ---------//
+
+    //----------- Start Player Definitionen und Player-Kollisionen -----------// 
+
     const player = add([
-        sprite('tiles'), solid(),
+        sprite('tiles'), solid(), 
         pos(30, 0),
         body(),
         origin('bot'),
@@ -209,21 +214,19 @@ scene("game", ({ level, score }) => {
         scoreLabel.text = scoreLabel.value
     })
 
-    action('bat', (n) => {   /* kann vermutlich entfernt werden weil doppelt mit 'tot' unten */
-    n.move(20, 0)   
-})
+    //----------- Ende Player Definitionen und Player-Kollisionen -----------// 
 
-    action('bad', (d) => {        /* Wurm: -enemy_speed (x-Achse) damit sie sich nach links bewegen. / y-Achse = 0) */
+    //----------- Start Gegner-Definitionen und Gegner-Kollisionen -----------// 
+    
+    action('bad', (d) => {        /* Ameise: -enemy_speed (x-Achse) damit sie sich nach links bewegen. / y-Achse = 0) */
         d.move(-ENEMY_SPEED_1, 0)
     })
     
-    action('tot', (a) => {              /* Fledermaus: -enemy_speed (x-Achse) damit sie sich nach links bewegen. / y-Achse = 0) */
+    action('dead', (a) => {          /* Fledermaus: -enemy_speed (x-Achse) damit sie sich nach links bewegen. / y-Achse = 0) */
         a.move(-ENEMY_SPEED_2, 0)
     })
 
-    //----------- Start Kollisionen -----------// 
-
-    player.collides('bad', (d) => {       /*wenn man in Boden-Gegner rennt, stirbt man, wenn man drauf hüpft, verschwinden Gegner*/
+    player.collides('bad', (d) => {      /*wenn man in Boden-Gegner rennt, stirbt man, wenn man drauf hüpft, verschwinden Gegner*/
         if (isJumping) {
             destroy(d)
         } else {
@@ -231,7 +234,7 @@ scene("game", ({ level, score }) => {
         }
     })
 
-    player.collides('tot', (a) => {                  /*wenn man Fledermaus berührt, stirbt man*/
+    player.collides('dead', (a) => {         /*wenn man Fledermaus berührt, stirbt man*/
         destroy(player, go('lose', { score: scoreLabel.value}))
     })
 
@@ -244,11 +247,11 @@ scene("game", ({ level, score }) => {
         })
     })
 
-    player.collides('cup', () => {
+    player.collides('cup', () => {            /* wenn man den Cup berührt, gewinnt man */
         go('win', { score: scoreLabel.value})
     })
 
-    //----------- Ende Kollisionen -----------// 
+    //----------- Ende Gegner-Definitionen und Gegner-Kollisionen -----------// 
 
 
     //----------- Start Bild bewegt sich mit Figur -----------// 
@@ -332,4 +335,5 @@ scene('win', ({ score}) => {
 
 //----------------------------Ende Definition Win ---------------------------------------//
 
+/* Die oben definierte Scene "game" wird gestartet und Level / Score starten bei Null */ 
 start("game", { level: 0, score:0})
