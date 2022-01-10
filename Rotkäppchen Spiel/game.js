@@ -3,8 +3,7 @@ kaboom({
     fullscreen: true,
     scale: 1,                       /*vergrössert alles, je höher die Zahl*/
     debug: true,                    /*zeigt alle Fehler direkt an*/
-    clearColor: [0,0,0,1],      /* definiert Hintergrundfarbe. RGBA color value zB 1,1,1,1 -> weiss
-                                    https://www.w3schools.com/css/css_colors_rgb.asp*/
+    clearColor: [0,0,0,1],      /* definiert Hintergrundfarbe. RGBA color value */
 })
 
 //-------- Start Definition Konstanten ---------/
@@ -21,17 +20,21 @@ const FALL_DEATH = 400
 
 //-------- Ende Definition Konstanten ---------/
 
-//-------- laden der Bilder bzw. Sprites  ---------/
+//-------- Start laden der Bilder bzw. Sprites  ---------/
 loadRoot('https://i.imgur.com/')
+
 loadSprite('coin', 'wbKxhcd.png')
 loadSprite('diamond', 'uy91fDA.png')
-loadSprite('ant1', 'vbXlL4I.png') /* 2x Ant, damit sie korrekt runterfallen */
-loadSprite('ant2', 'vbXlL4I.png')
 
-loadSprite('mouse', 'O5xgG52.png')
+loadSprite('ant1', 'vbXlL4I.png') /* Sprites aller Gegner */
+loadSprite('ant2', 'vbXlL4I.png') /* 2x Ant, damit sie korrekt runterfallen */
+loadSprite('bear', 'O5xgG52.png')
+loadSprite('bat', 'AY7h3ZQ.png')
+
 loadSprite('block', 'LhCBppg.png')   /* Boden */
 loadSprite('brick', 'rLgxPJd.png')   /* vertikale Säulen */
 loadSprite('door', '7BzohG3.png')
+loadSprite('cup', 'YMha7Un.png')
 
 /* Laden des TileSheets von Rotkäppchen mit verschiedenen Positionen*/
 loadSprite('tiles','vSTvkix.png',{   
@@ -44,17 +47,16 @@ loadSprite('tiles','vSTvkix.png',{
         runleft: {from: 10, to: 10 } /* Gehen nach links habe ich Sprite an Position 10/10 gewählt*/
     }
 })
-loadSprite('bubble', 'mHi5rD4.png')
-loadSprite('bat', 'AY7h3ZQ.png')
-loadSprite('cup', 'YMha7Un.png')
+
+//-------- Ende laden der Bilder bzw. Sprites  ---------/
 
 //---------------------------------- Start Scene Game ----------------------------------//
 
 scene("game", ({ level, score }) => {
     layers(['bg', 'obj', 'ui'], 'obj') 
     /* Defintion von 3 Layers. "ui" wird die oberste Oberfläche sein. Default Lauyer ist "obj" - object
-    verwendet wurde bisher nur der "ui" layer für Anzeige Punktezahl. 
-    ggf. wird auf "bg" noch ein Background gelegt */
+    Auf dem "ui" layer erscheint die Anzeige der Punktezahl. 
+    Auf "bg" könnte ein Background-Bild gelegt werden. Wurde hier verzichtet */
 
     const maps = [
        
@@ -75,7 +77,7 @@ scene("game", ({ level, score }) => {
             '===========================   ===========     ==========',],
 
         //----------------------- Ende Lvl 1 -----------------------//
-        //----------------------- Start Lvl 2 -----------------------//
+        //----------------------- Start Lvl 2 ----------------------//
 
         [
             '                                                    ',         
@@ -93,7 +95,7 @@ scene("game", ({ level, score }) => {
             '=====================     =======  =================',],
 
         //----------------------- Ende Lvl 2 -----------------------//
-        //----------------------- Start Lvl 3 -----------------------//
+        //----------------------- Start Lvl 3 ----------------------//
 
         [
             '                                 o   /                 ',         
@@ -112,7 +114,7 @@ scene("game", ({ level, score }) => {
             '======================================     =========== ',], 
 
         //----------------------- Ende Lvl 3 -----------------------//
-        //----------------------- Start Lvl 4 -----------------------//
+        //----------------------- Start Lvl 4 ----------------------//
         
         [
             '                                                              ',
@@ -129,7 +131,7 @@ scene("game", ({ level, score }) => {
             '============  =   ====    ==    ========    ======    ========',],
 
         //----------------------- Ende Lvl 4 -----------------------//
-        //----------------------- Start Lvl 5 -----------------------//
+        //----------------------- Start Lvl 5 ----------------------//
 
         [
             '                               $                            $   ',    
@@ -157,9 +159,10 @@ scene("game", ({ level, score }) => {
         //--------- Start Definition der Platzhalter in den Levels ---------//
 
         '=': [sprite('block'), solid(), scale(0.8)],
+        'i': [sprite('brick'), solid(), scale(0.8)],
+
         '$': [sprite('coin'), 'coin'],
         'o': [sprite('diamond'), 'diamond', scale(0.8)],
-        'i': [sprite('brick'), solid(), scale(0.8)],
 
         '+': [sprite('door'), scale(0.05), origin('center'), 'door'], /*origin('center') = Icon wird genau auf Ebene positioniert */
         'X': [sprite('cup'), origin('center'), 'cup'],
@@ -167,9 +170,8 @@ scene("game", ({ level, score }) => {
         '^': [sprite('ant1'), solid(), 'bad', body()], /*body = fügt gravity dazu*/
         'v': [sprite('ant2'), solid(), 'bad', body()], /*body = fügt gravity dazu*/
 
-        '*': [sprite('mouse'), solid(), 'bad', scale(1.2), body()],
+        '*': [sprite('bear'), solid(), 'bad', scale(1.2), body()],
         '/': [sprite('bat'), solid(), scale(0.6), 'tot'],
-        '%': [sprite('bubble'), solid(), 'blub'],
 
         
         //--------- Ende Definition der Platzhalter in den Levels ---------//
@@ -230,10 +232,6 @@ scene("game", ({ level, score }) => {
     })
 
     player.collides('tot', (a) => {                  /*wenn man Fledermaus berührt, stirbt man*/
-        destroy(player, go('lose', { score: scoreLabel.value}))
-    })
-
-    player.collides('blub', (b) => {                /*Level 5:wenn man den blauen "Blubb" berührt, stirbt man*/
         destroy(player, go('lose', { score: scoreLabel.value}))
     })
 
