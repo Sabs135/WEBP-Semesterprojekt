@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style_messenger.css">
+</head>
+<body>
+        <div class="container">
+        <!-- Quelle: https://dev.to/inezabonte/how-to-make-a-mini-messenger-with-javascript-for-beginners-mm3 -->  
+            <h4>Messenger</h4>
+    
+            <!-- Hier sind alle Chats zu sehen -->
+            <h5>Alle vergangenen Nachrichten</h5>
+            <div class="messages" id="post_msg"></div>
+
+            <!-- Where we will write the message and submit it -->
+            <form class="message-form" id="post_form" method="post">
+                <!--<input type="text" id="form_post_id" placeholder="ID"/>    -->
+                <input type="text" id="form_post_author" placeholder="Autor"/>
+                <!--<input type="text" id="form_post_msg" placeholder="Message" autofocus>-->
+                <input type="text" class="typedMessage" id="form_post_msg" placeholder="Schreib hier deine Nachricht..." autofocus>
+
+                <input class="submit" type="submit">Senden</input>
+            </form>
+
+            <!-- START USER HERAUSLESEN -->
+<!--<form id="get_form" method="get">
+     <input type="text", id="form_get_id" placeholder="Id"/>
+     <input type="submit" value="Search"/>
+  </form>
+ 
+  <div>
+     <h3>The Following data were successfuly found</h3>
+     <h5 id="get_id"></h5>
+     <h5 id="get_author"></h5>
+     <h5 id="get_msg"></h5>
+ </div>-->
+ 
+ <!-- END USER HERAUSLESEN -->
+    
+        </div>
+
+<script type='text/Javascript' src='js/script_messenger.js'></script>
+
+</body>
+
+</html>
