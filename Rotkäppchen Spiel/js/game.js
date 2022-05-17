@@ -1,6 +1,7 @@
 kaboom({
     global: true, 
-    fullscreen: true,
+    //fullscreen: true,//
+    width: 1300,
     scale: 1,                       /*vergrössert alles, je höher die Zahl*/
     debug: true,                    /*zeigt alle Fehler direkt an*/
     clearColor: [0,0,0,1],      /* definiert Hintergrundfarbe. RGBA color value */
