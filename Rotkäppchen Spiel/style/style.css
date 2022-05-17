@@ -40,5 +40,14 @@ section {
 hr {
     background-color: black;
 }
+.vertikal-flex 
+/* Bezieht sich auf den Body in login.html  */
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-
+.game-seite
+/* Bezieht sich auf den Body in spiel.html  */
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
