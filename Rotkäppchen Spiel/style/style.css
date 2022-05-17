@@ -24,7 +24,7 @@ a:link, a:visited {
   }
 
 header {
-    background-image: url(wald.jpeg);
+    background-image: url(../img/wald.jpeg) ;
     padding: 20px;
     text-align: center;
     font-size: 20px;
