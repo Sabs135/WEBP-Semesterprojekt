@@ -1,4 +1,4 @@
-// START USER HINZUFÜGEN WITH API
+// START ADD MESSAGE WITH API
 var post_form = document.getElementById('post_form')
 
     post_form.addEventListener('submit', function(e) {
@@ -42,56 +42,58 @@ var post_form = document.getElementById('post_form')
     }).catch(error => console.error('Error:', error)); 
     });
 
-// END USER HINZUFÜGEN
+// END ADD MESSAGE
 
 
 
-// START USER HERAUSLESEN
+// START SHOW MESSAGE
 
-
-//FUNKTIONIERT ABER OHNE SORTIERUNG
-/*fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/message/')
-.then(response => response.json())
-.then(result => {
-    console.log(result);
-    for (let i = 0; i < result.length; i++) {
-        console.log(result[i].id + result[i].author + result[i].msg);
-        textForHTML = '   '+result[i].author + ': ' +  result[i].msg + '  \r\n';
-        document.getElementById('post_msg').innerText += textForHTML;
-}
-})*/
-
-fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/message/')
-.then(response => response.json())
-.then(result => {
-    console.log(result);
-
-    //Comparer Function //Quelle: https://www.c-sharpcorner.com/UploadFile/fc34aa/sort-json-object-array-based-on-a-key-attribute-in-javascrip/
-    function GetSortOrder(prop) {    
-        return function(a, b) {    
-            if (a[prop] > b[prop]) {    
-                return 1;    
-            } else if (a[prop] < b[prop]) {    
-                return -1;    
+function loadMessages() {
+    fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/message/')
+        .then(response => response.json())
+        .then(result => {
+            //Comparer Function //Quelle: https://www.c-sharpcorner.com/UploadFile/fc34aa/sort-json-object-array-based-on-a-key-attribute-in-javascrip/
+            function GetSortOrder(prop) {    
+                return function(a, b) {    
+                    if (a[prop] > b[prop]) {    
+                        return 1;    
+                    } else if (a[prop] < b[prop]) {    
+                        return -1;    
+                    }    
+                    return 0;    
+                }    
             }    
-            return 0;    
-        }    
-    }    
-
-    //Array wird sortiert
-    result.sort(GetSortOrder("id"));
-
-    console.log(result);
-    for (var item in result) {    
-        console.log(result[item].id)
-        console.log(result[item].id + result[item].author + result[item].msg);
-        textForHTML = '   '+result[item].author + ': ' +  result[item].msg + '  \r\n';
-        document.getElementById('post_msg').innerText += textForHTML;
+        
+            //Array wird sortiert
+            result.sort(GetSortOrder("id"));
+        
+            for (var item in result) {    //Show Messages in the Feed
+                textForHTML = '   '+result[item].author + ': ' +  result[item].msg + '  \r\n';
+                document.getElementById('post_msg').innerText += textForHTML;
+            }
+        
+        });
     }
+    loadMessages();
 
-})
+var load = function() {
+    return new Promise(resolve => {
+      setTimeout(function() {
+        resolve(10);
+        loadMessages();
+      }, 5000);
+    });
+  };
+  
 
-// END USER HERAUSLESEN
+
+  var start = async function() {
+    console.log('==Works==');  
+    const fast = await load(); //funktion await laden
+    await start();
+  }
+  start();
+// END SHOW MESSAGE
 
 
 //Create an array where the message along with it's ID will be stored.
@@ -108,7 +110,7 @@ function addMessage(text){
     message.push(chat);
     
     //Render message to the screen
-    const list = document.querySelector('.messages');
+    const list = document.querySelector('.new_message');
     list.insertAdjacentHTML('beforeend', 
         `<p class="message-item" data-key="${chat.id_msg}">
             <span>${chat.text}</span>

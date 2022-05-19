@@ -63,6 +63,17 @@ input{
     flex-direction: column-reverse;
 }
 
+.new_message{
+    font-family: var(--main-font);
+    color: var(--text-color);
+    /*height: 200px;
+    overflow-x: hidden;
+    position: relative;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;*/
+}
+
 /* display: inline-block will help us to avoid the text from  */
 .message-item span{
     display: inline-block;

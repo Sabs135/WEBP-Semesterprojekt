@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta http-equiv="refresh" content="5">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messenger</title>
     <link rel="stylesheet" href="style/style_messenger.css">
@@ -15,6 +16,7 @@
             <!-- Hier sind alle Chats zu sehen -->
             <h5>Alle vergangenen Nachrichten</h5>
             <div class="messages" id="post_msg"></div>
+            <div class="new_message"></div>
 
             <!-- Where we will write the message and submit it -->
             <form class="message-form" id="post_form" method="post">
@@ -23,7 +25,7 @@
                 <!--<input type="text" id="form_post_msg" placeholder="Message" autofocus>-->
                 <input type="text" class="typedMessage" id="form_post_msg" placeholder="Schreib hier deine Nachricht..." autofocus>
 
-                <input class="submit" type="submit">Senden</input>
+                <input class="submit" type="submit"></input>
             </form>
 
             <!-- START USER HERAUSLESEN -->
@@ -43,7 +45,7 @@
     
         </div>
 
-<script type='text/Javascript' src='js/script_messenger.js'></script>
+<script type='text/Javascript' src='js/script_messenger_polling.js'></script>
 
 </body>
 
