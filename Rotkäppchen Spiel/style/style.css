@@ -1,3 +1,10 @@
+:root {
+    --primary-color: saddlebrown;
+    --secondary-color: #2B2B2B;
+    --main-font: Arial, Helvetica, sans-serif;
+    --text-color: black;
+} 
+
 body {
     margin: 0;
     overflow: hidden;
@@ -50,4 +57,91 @@ hr {
 /* Bezieht sich auf den Body in spiel.html  */
 {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/* Style for Messenger */
+.container{
+    display: none;
+    flex-direction: column;
+    width: 400px;
+    margin: 20px;
+    background-color: var(--primary-color);
+    padding: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+input{
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border-style: none;
+    background-color: var(--secondary-color);
+    font-size: 15px;
+    color: white;
+}
+
+.messages{
+    font-family: var(--main-font);
+    color: var(--text-color);
+    height: 200px;
+    overflow-x: hidden;
+    position: relative;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.new_message{
+    font-family: var(--main-font);
+    color: white;
+}
+
+.message-item span{
+    display: inline-block;
+    padding:10px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.submit{
+    padding: 8px;
+    border-radius: 5px;
+    font-family: var(--main-font);
+    font-size: 15px;
+    color: white;
+    background-color: var(--secondary-color);
+    border-style: none;
+}
+  
+.btn-open-messenger {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 8px;
+    margin: 20px;
+    border-radius: 5px;
+    font-family: var(--main-font);
+    font-size: 15px;
+    color: white;
+    background-color: var(--secondary-color);
+    border-style: none;
+}
+
+.btn-close-messenger {
+    position: absolute;
+    right: 0;
+    margin: 10px;
+    border-radius: 25px;
+    font-family: var(--main-font);
+    font-size: 10px;
+    color: white;
+    background-color: var(--secondary-color);
+    border-style: none;
 }

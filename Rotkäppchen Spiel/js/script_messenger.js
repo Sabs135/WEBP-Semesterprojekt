@@ -34,11 +34,11 @@ var post_form = document.getElementById('post_form')
     .then(function(data)
     {console.log(data)
     id=document.getElementById("post_id")
-    author=document.getElementById("post_author")
-    msg=document.getElementById("post_msg")
+    author=document.getElementById("post_author");
+    msg=document.getElementById("post_msg");
     id.innerHTML = data.id
-    author.innerHTML = data.author
-    msg.innerHTML = data.msg
+    author.innerHTML = data.author;
+    msg.innerHTML = data.msg;
     }).catch(error => console.error('Error:', error)); 
     });
 
@@ -120,13 +120,13 @@ function addMessage(text){
     
 
     // Delete the message from the screen after 2 seconds ---> können wir dann glaub löschen
-/*
+
     let token = setTimeout(() => {
         Array.from(list.children).forEach((child) => 
        list.removeChild(child))
        clearTimeout(token);
-      },2000);
-*/
+      },6000);
+
 
 }
 
@@ -148,3 +148,18 @@ form.addEventListener('submit', event => {
         
     }
 })
+
+
+//Open / Close Messenger - Button
+
+function toggleText(){
+    var x = document.getElementById("Myid");
+    if (x.style.display === "none") {
+      x.style.display = "flex";
+    } else if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+        x.style.display = "none"; 
+    }
+
+  }

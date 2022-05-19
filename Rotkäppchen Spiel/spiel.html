@@ -12,15 +12,46 @@
     <h1>Rotkäppchen Spiel</h1>
 
     <p>Viel Erfolg beim Spielen</p>
-    <p>Möchtest du mit den Mitspieler:innen chatten? Hier kannst du den Chat öffnen</p>
+    <p>Möchtest du mit den Mitspieler:innen chatten? unten rechts kannst du den Messenger öffnen</p>
     
     <br>
-    <a href="messenger.html" target="_blank">Zum Messenger</a>
+    <!--<a href="messenger.html" target="_blank">Zum Messenger</a>-->
     <!--Design für Formatierung Button inkl Schrif ist in CSS unter a:link (...) zu finden.-->
     <!--Alle Buttons auf allen html haben dieselbe Formatierung.-->
     <br>
     <br>
-    <script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
-    <script src="js/game.js"></script>
+
+            <script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
+            <script src="js/game.js"></script>
+
+
+            <button class="btn-open-messenger" onclick="toggleText()">Messenger öffnen</button>
+
+        <div class="container" id="Myid">
+            
+            <!-- Quelle: https://dev.to/inezabonte/how-to-make-a-mini-messenger-with-javascript-for-beginners-mm3 -->  
+                <h2>Messenger</h2>
+                <button class="btn-close-messenger" onclick="toggleText()">x</button>
+
+                <!-- Hier sind alle Chats zu sehen -->
+                <h4>Alle vergangenen Nachrichten</h4>
+                <div class="messages" id="post_msg"></div>
+                <div class="new_message"></div>
+
+                <!-- Where we will write the message and submit it -->
+                <form class="message-form" id="post_form" method="post">
+                    <input type="text" id="form_post_author" placeholder="Autor"/>
+                    <input type="text" class="typedMessage" id="form_post_msg" placeholder="Schreib hier deine Nachricht..." autofocus>
+
+                    <input class="submit" type="submit"></input>
+                </form>    
+                
+           
+        </div>
+
+
+        <script type='text/Javascript' src='js/script_messenger.js'></script>
+
+
 </body>
 </html>
