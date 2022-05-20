@@ -1,3 +1,5 @@
+/* Anmerkungen zu den Quellen: Alle Quellen zum Game sind zuunterst zu finden */
+
 kaboom({
     global: true, 
     //fullscreen: true,//
@@ -344,3 +346,28 @@ scene('win', ({ score}) => {
 
 /* Die oben definierte Scene "game" wird gestartet und Level / Score starten bei Null */ 
 start("game", { level: 0, score:0})
+
+
+
+
+//----------------------------------------------------------------------------//
+//---------------------------- Quellen ---------------------------------------//
+/* 
+
+//-- Bilder: --//
+
+admiralpxl. FREE Spring Sprite-Sheets Pixelart. Verfügbar unter https://admiral- pxl.itch.io/spring-sprite-sheets-pixelart
+aniakubow20 (2021). Super Mario Bros. Verfügbar unter https://imgur.com/a/F8Jkryq BONESGFX (2020). Sprites. Verfügbar unter https://imgur.com/gallery/Y21S7zW
+Freepik Company S.L. Ant free icon. Verfügbar unter https://www.flaticon.com/free- icon/ant_809140?term=ant&related_id=809140
+Freepik Company S.L. Bat free icon. Verfügbar unter https://www.flaticon.com/free- icon/bat_3526546
+Freepik Company S.L. Bear premium icon. Verfügbar unter https://www.flaticon.com/pre- mium-icon/bear_2097915?term=bear&page=1&position=18&page=1&position=18&rela- ted_id=2097915
+Freepik Company S.L. Trophy free icon. Verfügbar unter https://www.flaticon.com/free- icon/trophy_708906?term=cup&page=1&position=39&page=1&position=39&rela- ted_id=708906
+La Red Games. Gems / Coins Free. Verfügbar unter https://laredgames.itch.io/gems-coins- free
+mawwyncha. (2014). Sprites. Verfügbar unter https://imgur.com/gallery/eYw55 of_imperfect. 2d Door. Verfügbar unter https://of-imperfect.itch.io/2d-door
+
+//-- Tutorials und sonstiges: --//
+
+Code with Ania Kubów. (2021). Code Mario in JavaScript with Kaboom.js! [Video]. https://www.youtube.com/watch?v=2nucjefSr6I
+Kaboom.js. Verfügbar unter https://kaboomjs.com/
+
+*/
