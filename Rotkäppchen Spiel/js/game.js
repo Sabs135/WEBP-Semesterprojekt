@@ -316,6 +316,9 @@ scene('lose', ({ score}) => {                                                   
     add([text('Game over', 50), origin('center'), pos(width()/2, height()/3)]);      /*zeigt bei Game-Over den Begriff Game over an*/
     add([text('Du hast ' + score + ' Punkte gesammelt', 30), origin('center'), pos(width()/2, height()/2)]);          /*zeigt bei Game-Over den Punktestand an*/
     add([text('Versuch es nochmal', 30), origin('center'), pos(width()/2, height()/1.5)]);
+    
+    localStorage.setItem("mostRecentScore", score); /* setzt meinen letzten Spielstand in Localstorage */
+    
     /* Klick auf Leertaste -> Start erneut */
     keyPress('space', () => {
         go('game', { level: 0, score:0})
@@ -328,6 +331,9 @@ scene('win', ({ score}) => {
     add([text('Du hast gewonnen', 50), origin('center'), pos(width()/2, height()/3)]);
     add([text('Du hast ' + score + ' Punkte gesammelt', 30), origin('center'), pos(width()/2, height()/2)]);
     add([text('Willst du noch einmal spielen?', 30), origin('center'), pos(width()/2, height()/1.5)]);
+    
+    localStorage.setItem("mostRecentScore", score); /* setzt meinen letzten Spielstand in Localstorage */
+    
     /* Klick auf Leertaste -> Start erneut */
     keyPress('space', () => {
         go('game', { level: 0, score:0})

@@ -147,3 +147,28 @@ input{
     background-color: var(--secondary-color);
     border-style: none;
 }
+
+
+#saveScoreBtn{
+    padding: 8px;
+    border-radius: 5px;
+    font-family: var(--main-font);
+    font-size: 15px;
+    color: white;
+    background-color: var(--secondary-color);
+    border-style: none;
+}
+
+
+/* Style für Highscores */
+
+/* Eigentlich wollte ich die Liste mit 1., 2. usw haben, aber auf Chrome kleben die Nr immer links und nicht in der Mitte  */
+#highScoresList {
+    padding-left: 0;
+  }
+
+/* Abstand zw. den einzelnen Scores  */
+.high-score {
+    margin-bottom: 10px;
+    font-size: 20px;
+}

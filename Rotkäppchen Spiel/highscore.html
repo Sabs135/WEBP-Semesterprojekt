@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Highscore: Rotkäppchen Spiel</title>
+    
+</head>
+<body class='game-seite'>
+    <div class="container_hs"> <!--CSS TODO--> 
+
+    <!-- Quelle: https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/tree/master/8.%20Save%20High%20Scores%20in%20Local%20Storage -->
+        <div>  <!--CSS TODO--> 
+        <h1>Meine Highscores</h1>
+
+        <p>Du hast bei denem letzten Spiel <b id="finalScore"> </b> Punkte gemacht.</p>  
+        <p>Möchtest du die Punkte in deine Highscoreliste speichern?</p>         
+        
+
+
+            <form>
+                <!-- CSS TODO, fällt vermutlich eh weg wege Login -> API--> 
+                <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="username"
+                />
+                <!-- CSS TODO, aber aktuell nur "saveScoreBtn" verwendet--> 
+                <button       
+                type="submit"  
+                class="btn"     
+                id="saveScoreBtn"
+                onclick="saveHighScore(event)"
+                disabled
+                >
+                Speichern
+                </button>
+            </form>
+        </div>
+        <div id="highScores">
+            <h2 id="finalScore">Das sind deine 5 besten Spielergebnisse:</h2>
+            <ol id="highScoresList"></ol>
+        </div>    
+    </div>
+
+    <script src="js/highscore.js"></script>
+    <br>
+    <br>
+    <a href="spiel.html">Nochmals spielen</a>
+
+
+    <!--Design für Formatierung Button inkl Schrif ist in CSS unter a:link (...) zu finden.-->
+    <!--Alle Buttons auf allen html haben dieselbe Formatierung.-->
+
+
+    <br>
+    <br>
+    <script>
+ </script>
+</body>
+</html>
