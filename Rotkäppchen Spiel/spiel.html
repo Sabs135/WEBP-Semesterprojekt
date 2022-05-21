@@ -11,6 +11,15 @@
 <body class='game-seite'>
     <h1>Rotkäppchen Spiel</h1>
 
+
+    <!-- Das ist wohl nicht schön, aber so hole ich glaub vom localStorage hervor  -->
+    <!-- Fehlt noch Anzeige im html Doc. Funktioniert in Google Chrome  -->
+
+    <script>var retrievedObject = localStorage.getItem('userDetails');
+
+        console.log('retrievedObject: ', JSON.parse(retrievedObject));
+    </script>
+    
     <p>Viel Erfolg beim Spielen</p>
     <p>Möchtest du mit den Mitspieler:innen chatten? unten rechts kannst du den Messenger öffnen</p>
     <p>Vergiss nicht deinen Highscore zu speichern, wenn er in deine Top 5 soll!</p>

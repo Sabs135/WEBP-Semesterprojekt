@@ -12,10 +12,13 @@ const MAX_HIGH_SCORES = 5; /* meine letzten X Highscores anzeigen */
 
 finalScore.innerText = mostRecentScore; 
 
+/*---funktioniert gerade nicht. muss ich noch anschauen. 
+Sollte sein: Button ist disabled, wenn kein Username in Feld getippt wurde
+
 username.addEventListener('keyup', () => {
-    /* Button ist disabled, wenn kein Username in Feld getippt wurde */
-    saveScoreBtn.disabled = !username.value;  
+   /*  saveScoreBtn.disabled = !username.value;  
 });
+*/
 
 saveHighScore = (e) => {
     e.preventDefault();     /* verhindert, dass es woanders hingepostet wird. Muss das evt weg bei API Post? */
