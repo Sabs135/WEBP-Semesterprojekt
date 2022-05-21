@@ -63,9 +63,9 @@ hr {
 
 
 
-/* Style for Messenger */
+/* Style für den Messenger */
 .container{
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 400px;
     margin: 20px;
@@ -91,6 +91,10 @@ input{
 
 .messages{
     font-family: var(--main-font);
+    text-align: left;
+    padding-right:25px;
+    padding-bottom: 5px;
+    margin:30px;
     color: var(--text-color);
     height: 200px;
     overflow-x: hidden;
@@ -100,9 +104,8 @@ input{
     flex-direction: column-reverse;
 }
 
-.new_message{
-    font-family: var(--main-font);
-    color: white;
+.messages p {
+    margin: 5px;
 }
 
 .message-item span{

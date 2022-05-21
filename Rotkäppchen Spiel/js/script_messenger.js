@@ -1,19 +1,17 @@
+
+
+
 // START ADD MESSAGE WITH API
 var post_form = document.getElementById('post_form')
 
-    post_form.addEventListener('submit', function(e) {
-        e.preventDefault()
 
-        //var id = document.getElementById('form_post_id').value
-        var id = Date.now()
-        var author = document.getElementById('form_post_author').value
-        var msg = document.getElementById('form_post_msg').value
-        //var id = Date.now()
-        
-// ID options:
-        //Math.random().toString(16).slice(2) 
-        //Date.now() 
-        //document.getElementById('form_id').value
+post_form.addEventListener('submit', function(e) {
+    e.preventDefault()
+
+    var id = Date.now()
+    var author = document.getElementById('form_post_author').value
+    var msg = document.getElementById('form_post_msg').value
+    const text = msg.value.trim(); //leere Nachrichten entdecken & ignorieren
 
     //API Fetch POST
     fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/message/', {
@@ -23,8 +21,8 @@ var post_form = document.getElementById('post_form')
             author:author,
             msg:msg,
     }),
-    // Adding headers to the request
-    headers: {
+
+    headers: { //Header beim Request hinzufügen
         "Content-type": "application/json; charset=UTF-8"
     }
     })
@@ -40,20 +38,45 @@ var post_form = document.getElementById('post_form')
     author.innerHTML = data.author;
     msg.innerHTML = data.msg;
     }).catch(error => console.error('Error:', error)); 
+
+    
+
+    if(text !== ''){ //Nachricht nach abschicken löschen
+        input.value = '';
+        input.focus(); 
+    }
     });
 
 // END ADD MESSAGE
 
 
-
 // START SHOW MESSAGE
 
-function loadMessages() {
+let lastMsg = [] //Hier werden die IDs gepseichert für die Anzeige
+
+function loadMsgs() {
     fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/message/')
-        .then(response => response.json())
+        .then(response => {
+            
+            if (response.status === 500) { //wenn ein Fehler 500 erscheint
+                //Fehler
+                loadMsgs();
+                throw new Error("Hoppla. Etwas ist schiefgelaufen ... Error 500 - retry");
+            }
+            if (!response.ok) { //wenn generell ein Fehler erscheint, damit der User es mitbekommt
+                alert('geht nicht');
+                throw new Error("Hoppla. Etwas ist schiefgelaufen ...");
+            }
+            return response.json(); //wenn alles okay ist, dann soll er die Daten ausgeben
+
+           
+            
+        })
+        
         .then(result => {
             //Comparer Function //Quelle: https://www.c-sharpcorner.com/UploadFile/fc34aa/sort-json-object-array-based-on-a-key-attribute-in-javascrip/
-            function GetSortOrder(prop) {    
+            
+            function GetSortOrder(prop) {    // JSON Sortieren aufgrund der ID
                 return function(a, b) {    
                     if (a[prop] > b[prop]) {    
                         return 1;    
@@ -62,96 +85,75 @@ function loadMessages() {
                     }    
                     return 0;    
                 }    
-            }    
-        
-            //Array wird sortiert
-            result.sort(GetSortOrder("id"));
-        
-            for (var item in result) {    //Show Messages in the Feed
-                textForHTML = '   '+result[item].author + ': ' +  result[item].msg + '  \r\n';
-                document.getElementById('post_msg').innerText += textForHTML;
-            }
-        
+            }  
+
+            result.reverse(result.sort(GetSortOrder("id"))); //Array wird sortiert
+
+            for (var item in result) {    //Nachrichten im Feed anzeigen
+                lastMsg.push(result[item].id) //ID der Messages in den Array speichern
+                const idMsg = document.getElementById('post_msg')
+                const newP = document.createElement('p');
+                const newText = document.createTextNode(result[item].author + ': ' +  result[item].msg); //Nachrichten hinzufügen
+                idMsg.appendChild(newP); 
+                newP.appendChild(newText);
+            };
+
         });
     }
-    loadMessages();
 
-var load = function() {
+    loadMsgs();
+
+
+    function loadMsg() {
+        fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/message/')
+            .then(response => {
+                if (response.status === 500) { //wenn ein Fehler 500 erscheint
+                    //Fehler
+                    loadMsg();
+                    throw new Error("Hoppla. Etwas ist schiefgelaufen ... Error 500 - retry");
+                }
+                if (!response.ok) { //wenn generell ein Fehler erscheint, damit der User es mitbekommt
+                    alert('geht nicht');
+                    throw new Error("Hoppla. Etwas ist schiefgelaufen ...");
+                }
+                return response.json(); //wenn alles okay ist, dann soll er die Daten ausgeben                
+            })
+            
+            .then(result => {   
+                for (var item in result) {    //Nachrichten im Feed anzeigen
+                    if (result[item].id > lastMsg[0]) {
+                        console.log(result[item].id + ' is bigger than ' + lastMsg[0]); //schauen, ob es die Nachricht bereits gibt
+                        lastMsg.unshift(result[item].id); // unshift fügt es zu beginn an beim Array, Push am ende
+                        console.log(lastMsg);
+                    
+                        const idMsg = document.getElementById('new_msg')
+                        const newP = document.createElement('p');
+                        const newText = document.createTextNode(result[item].author + ': ' +  result[item].msg);//Nachrichten hinzufügen (unten)
+                        idMsg.appendChild(newP);
+                        newP.appendChild(newText);
+                    };
+                };
+            });
+    }
+
+var load = function() {   //schauen ob es neue Nachrichten in der API gibt
     return new Promise(resolve => {
       setTimeout(function() {
         resolve(10);
-        loadMessages();
+        loadMsg();
       }, 5000);
     });
   };
-  
 
-
-  var start = async function() {
+  var start = async function() { 
     console.log('==Works==');  
-    const fast = await load(); //funktion await laden
+    const fast = await load(); //funktion load laden
     await start();
   }
   start();
 // END SHOW MESSAGE
 
-
-//Create an array where the message along with it's ID will be stored.
-let message = [];
-
-// This fuction will enables us to add the message to the DOM
-function addMessage(text){
-    //Object where message will be stored
-    const chat = {
-        text,
-        id_msg: Date.now()
-    }
-
-    message.push(chat);
-    
-    //Render message to the screen
-    const list = document.querySelector('.new_message');
-    list.insertAdjacentHTML('beforeend', 
-        `<p class="message-item" data-key="${chat.id_msg}">
-            <span>${chat.text}</span>
-        </p>`
-
-    );
-    
-
-    // Delete the message from the screen after 2 seconds ---> können wir dann glaub löschen
-
-    let token = setTimeout(() => {
-        Array.from(list.children).forEach((child) => 
-       list.removeChild(child))
-       clearTimeout(token);
-      },6000);
-
-
-}
-
-//Create event listener to detect when a message has been submitted
-const form = document.querySelector('.message-form');
-form.addEventListener('submit', event => {
-    event.preventDefault();
-
-    //input to save the message itself
-    const input = document.querySelector('.typedMessage');
-
-    //This helps us to detect empty messages and ignore them
-    const text = input.value.trim();
-
-    if(text !== ''){
-        addMessage(text);
-        input.value = '';
-        input.focus();
-        
-    }
-})
-
-
-//Open / Close Messenger - Button
-
+//Open & Close Messenger - Button
 function toggleText(){
     var x = document.getElementById("Myid");
     if (x.style.display === "none") {

@@ -37,12 +37,14 @@
                 <h2>Messenger</h2>
                 <button class="btn-close-messenger" onclick="toggleText()">x</button>
 
-                <!-- Hier sind alle Chats zu sehen -->
+                <!-- Hier sind alle Nachrichten zu sehen -->
                 <h4>Alle vergangenen Nachrichten</h4>
-                <div class="messages" id="post_msg"></div>
-                <div class="new_message"></div>
+                <div class="messages" id="post_msg">
+                    <div id="new_msg"></div>
+                </div>
+                
 
-                <!-- Where we will write the message and submit it -->
+                <!-- Nachricht schreiben & Abschicken -->
                 <form class="message-form" id="post_form" method="post">
                     <input type="text" id="form_post_author" placeholder="Autor"/>
                     <input type="text" class="typedMessage" id="form_post_msg" placeholder="Schreib hier deine Nachricht..." autofocus>
