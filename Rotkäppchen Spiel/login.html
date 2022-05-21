@@ -11,95 +11,28 @@
 <body class='vertikal-flex'>
     
         <h1>Login</h1>
-        <p id='result'></p>
+        <p id='result'></p> <!-- wofür ist das??-->
+        <p>Hallo Spieler:in! Logg dich bitte ein.</p> 
 
 <!-- START USER HINZUFÜGEN -->
        <form id="form" method="post">
-            <input type="text", id="form_post_name" placeholder="Benutzername"/>
+            <input type="text", id="form_post_name" placeholder="Benutzername" required minlength="5" maxlength="20"/>
             <input type="submit" value="Add"/>
        </form>
-
+            <!-- Hinweise zum Form -->
+            <!-- required hinzugefügt, dass nur gesendet werden kann, wenn Name vorhanden -->
+            <!-- minlength: Meldung erscheint wenn zu kurz, bei maxlength nicht. -->
+  
          <div>
-            <h3>The Following data is successfuly posted</h3>
-            <h4 id="post_name"></h4>
-            <h5 id="post_id"></h5>
+            <!--  <h3>The Following data is successfuly posted</h3>  -->
+            <p>Herzlich willkommen: <b id="post_name"></b></p>
+            <p>Deine ID ist: <b id="post_id"></b></p>
          </div>
-         <p>&nbsp;</p>
+         <p>&nbsp;</p> <!-- wofür ist das??-->
 
 <!-- END USER HINZUFÜGEN -->
 
-<!-- START USER HERAUSLESEN -->
-<form id="get_form" method="get">
-   <!-- <input type="text", id="form_name" placeholder="Name"/></br>-->
-    <input type="text", id="form_get_id" placeholder="Id"/>
-    <input type="submit" value="Search"/>
- </form>
-
- <div>
-    <h3>The Following data were successfuly found</h3>
-    <h4 id="get_name"></h4>
-    <h5 id="get_id"></h5>
-</div>
-
-<!-- END USER HERAUSLESEN -->
-
-    
-
-<script>
-// START USER HINZUFÜGEN
-
-const userDetails = JSON.parse(localStorage.getItem("userDetails")) || [];
-var form = document.getElementById('form')
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault()
-
-        /*verstehe nicht wieso, aber ich muss beide Zeilen hier lassen, sonst gab es einen Fehler */
-        /*sollte bereinigt werden */
-        /*ABER: bitte nachfolgende 6 Zeilen Code NICHT einfach so löschen... */
-        var name = document.getElementById('form_post_name').value
-        var id = Date.now()
-
-        const userDetails = {
-            name: name = document.getElementById('form_post_name').value,
-            id: id = Date.now()
-        };
-
-        console.log(userDetails); 
-    
-        localStorage.setItem('userDetails', JSON.stringify(userDetails));  /* userDetails in Local Storage */
-    
-        // ID options:
-            //Math.random().toString(16).slice(2) 
-            //Date.now() 
-            //document.getElementById('form_id').value
-
-        //API Fetch POST
-        fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/spieler/', {
-            method: 'POST', 
-            body: JSON.stringify({
-                name:name,
-                id:id,
-        }),
-        // Adding headers to the request
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-    }
-    })
-
-    .then(function(response){ 
-        return response.json()})
-    .then(function(data)
-        {console.log(data)
-        name=document.getElementById("post_name")
-        id=document.getElementById("post_id")
-        name.innerHTML = data.name
-        id.innerHTML = data.id
-        }).catch(error => console.error('Error:', error)); 
-    });
-
-// END USER HINZUFÜGEN
-</script>
+<script src="js/login.js"></script>
 
 <a href="spiel.html">Zum Spiel</a>
 
