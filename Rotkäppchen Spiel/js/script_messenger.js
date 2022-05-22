@@ -11,7 +11,8 @@ post_form.addEventListener('submit', function(e) {
     var id = Date.now()
     var author = document.getElementById('form_post_author').value
     var msg = document.getElementById('form_post_msg').value
-    const text = msg.value.trim(); //leere Nachrichten entdecken & ignorieren
+    const input = document.querySelector('.typedMessage');
+    const text = input.value.trim(); //leere Nachrichten entdecken & ignorieren
 
     //API Fetch POST
     fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/message/', {
@@ -141,7 +142,7 @@ var load = function() {   //schauen ob es neue Nachrichten in der API gibt
       setTimeout(function() {
         resolve(10);
         loadMsg();
-      }, 5000);
+      }, 1000);
     });
   };
 
