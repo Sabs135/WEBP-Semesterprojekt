@@ -124,6 +124,20 @@ input{
     background-color: var(--secondary-color);
     border-style: none;
 }
+
+
+.submit:hover {
+    background-color: grey;
+}
+
+/* geht grad irgendwie nicht 
+.submit:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+  */
   
 .btn-open-messenger {
     position: absolute;
@@ -152,8 +166,8 @@ input{
 }
 
 
-#saveScoreBtn{
-    padding: 8px;
+#saveBtn{
+    padding: 10px;
     border-radius: 5px;
     font-family: var(--main-font);
     font-size: 15px;
@@ -162,6 +176,16 @@ input{
     border-style: none;
 }
 
+#saveBtn:hover {
+    background-color: grey;
+}
+ /*
+#saveBtn:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+*/
 
 /* Style für Highscores */
 
