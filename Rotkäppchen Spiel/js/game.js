@@ -308,6 +308,26 @@ scene("game", ({ level, score }) => {
     })
     //------------------ Ende Player Bewegungen  ----------------------------------//
 
+    //------------------Start Pause einleiten ----------------------------------------------//
+    
+    keyPress('p', () => {
+        go('pause', { 
+            score: scoreLabel.value, 
+            level: level,
+        })
+
+
+        })
+        
+        
+        localStorage.setItem('score', scoreLabel.value),
+        localStorage.setItem('level', level)
+        
+        
+    
+
+    //----------------------Ende Pause einleiten-------------------------------//
+
 })
 //---------------------------------- Ende Scene Game ----------------------------------//
 
@@ -343,6 +363,27 @@ scene('win', ({ score}) => {
 })
 
 //----------------------------Ende Definition Win ---------------------------------------//
+
+//----------------------------Start Pausenfenster -----------------------------------//
+scene('pause', ({ score, level}) => {
+    add([text('See you later', 50), origin('center'), pos(width()/2, height()/3)]); 
+    keyPress('b', () => {
+        go('game',{   
+            score: localStorage.getItem('score'),
+            level: level
+        })
+           
+    })
+    
+    add([text('Zurueck zum Spiel', 30), origin('center'), pos(width()/2, height()/1.5)]);
+    
+    
+    
+})
+
+
+
+//---------------------------Ende Pausenfenster-------------------------------------//
 
 /* Die oben definierte Scene "game" wird gestartet und Level / Score starten bei Null */ 
 start("game", { level: 0, score:0})
