@@ -11,6 +11,7 @@ var form = document.getElementById('form')
         /*ABER: bitte nachfolgende 6 Zeilen Code NICHT einfach so löschen... */
         var name = document.getElementById('form_post_name').value
         var id = Date.now()
+        localStorage.setItem('name', JSON.stringify(name));  /* Brauche ich für Anzeige auf spiel.html und highscore.html */
 
         const userDetails = {
             name: name = document.getElementById('form_post_name').value,

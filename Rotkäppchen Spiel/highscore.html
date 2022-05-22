@@ -13,7 +13,23 @@
 
     <!-- Quelle: https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/tree/master/8.%20Save%20High%20Scores%20in%20Local%20Storage -->
         <div>  <!--CSS TODO--> 
-        <h1>Meine Highscores</h1>
+        <h1>Highscores</h1>
+        <p id="post_name"></p>
+
+        <script>
+            /*ich fasse diese Teile von highscore.htmlt un den von spiel.html dann zusammen und werde wohl ein separates .js machen */
+            var retrievedObject = localStorage.getItem('userDetails');
+            console.log('retrievedObject: ', JSON.parse(retrievedObject));
+            
+            window.onload = function() {
+                document.getElementById('post_name').innerText = "Hey Spieler:in " + localStorage.getItem('name') + "!";
+            };
+            /* das 'post_name' bezieht sich auf die id='post_name' weiter oben im html. Das ist der Platzhalter 
+            wo mein Text/Name reinkommt /*
+    
+            /*https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page 
+            /* evt brauche ich URL erneut...*/
+        </script>
 
         <p>Du hast bei denem letzten Spiel <b id="finalScore"> </b> Punkte gemacht.</p>  
         <p>Möchtest du die Punkte in deine Highscoreliste speichern?</p>         

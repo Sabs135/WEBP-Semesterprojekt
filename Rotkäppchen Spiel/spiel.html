@@ -11,18 +11,22 @@
 <body class='game-seite'>
     <h1>Rotkäppchen Spiel</h1>
 
+    <p id="post_name"></p>
 
-    <!-- Das ist wohl nicht schön, aber so hole ich glaub vom localStorage hervor  -->
-    <!-- Fehlt noch Anzeige im html Doc. Funktioniert in Google Chrome  -->
-    <!-- habe es vorerst mal noch auskommentiert
+    <script>
+    var retrievedObject = localStorage.getItem('userDetails');
+     console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
-    <script>var retrievedObject = localStorage.getItem('userDetails');
+    window.onload = function() {
+            document.getElementById('post_name').innerText = "Viel Erfolg beim Spielen " + localStorage.getItem('name') + "!";
+        };
+        /* das 'post_name' bezieht sich auf die id='post_name' weiter oben im html. Das ist der Platzhalter 
+        wo mein Text/Name reinkommt /*
 
-        console.log('retrievedObject: ', JSON.parse(retrievedObject));
+        /*https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page 
+        /* evt brauche ich URL erneut...*/
     </script>
     
-    -->
-    <p>Viel Erfolg beim Spielen</p>
     <p>Möchtest du mit den Mitspieler:innen chatten? unten rechts kannst du den Messenger öffnen</p>
     <p>Vergiss nicht deinen Highscore zu speichern, wenn er in deine Top 5 soll!</p>
 
