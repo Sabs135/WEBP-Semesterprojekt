@@ -12,6 +12,7 @@ var form = document.getElementById('form')
         var name = document.getElementById('form_post_name').value
         var id = Date.now()
         localStorage.setItem('name', JSON.stringify(name));  /* Brauche ich für Anzeige auf spiel.html und highscore.html */
+        /* könnte ich auch anstatt JSON.stringify(name) einfach name.value schreiben?? */
 
         const userDetails = {
             name: name = document.getElementById('form_post_name').value,
@@ -22,11 +23,6 @@ var form = document.getElementById('form')
     
         localStorage.setItem('userDetails', JSON.stringify(userDetails));  /* userDetails in Local Storage */
     
-        // ID options:
-            //Math.random().toString(16).slice(2) 
-            //Date.now() 
-            //document.getElementById('form_id').value
-
         //API Fetch POST
         fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/spieler/', {
             method: 'POST', 

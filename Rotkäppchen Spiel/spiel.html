@@ -14,14 +14,18 @@
     <p id="post_name"></p>
 
     <script>
+    /* Script von highscore.htmlt & spiel.html zusammenfassen für separates .js ?? Too check... Aktuell nicht 1:1 gleich */
+    /* für die Anzeige in der Konsole */
     var retrievedObject = localStorage.getItem('userDetails');
      console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
     window.onload = function() {
-            document.getElementById('post_name').innerText = "Viel Erfolg beim Spielen " + localStorage.getItem('name') + "!";
+            document.getElementById('post_name').innerText = "Viel Erfolg beim Spielen " + JSON.parse(localStorage.getItem('name')) + "!";
         };
         /* das 'post_name' bezieht sich auf die id='post_name' weiter oben im html. Das ist der Platzhalter 
         wo mein Text/Name reinkommt /*
+        JSON.parse damit das Objekt nicht in "" erscheint /*
+
 
         /*https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page 
         /* evt brauche ich URL erneut...*/

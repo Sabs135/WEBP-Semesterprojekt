@@ -22,7 +22,8 @@
             console.log('retrievedObject: ', JSON.parse(retrievedObject));
             
             window.onload = function() {
-                document.getElementById('post_name').innerText = "Hey Spieler:in " + localStorage.getItem('name') + "!";
+                document.getElementById('post_name').innerText = "Ciao " + JSON.parse(localStorage.getItem('name'));
+                /* .innerText oder .value ? */
             };
             /* das 'post_name' bezieht sich auf die id='post_name' weiter oben im html. Das ist der Platzhalter 
             wo mein Text/Name reinkommt /*

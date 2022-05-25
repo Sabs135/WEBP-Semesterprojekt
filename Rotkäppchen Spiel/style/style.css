@@ -65,7 +65,7 @@ hr {
 
 /* Style für den Messenger */
 .container{
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 400px;
     margin: 20px;
