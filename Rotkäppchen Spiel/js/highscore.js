@@ -1,6 +1,7 @@
 // Quelle der Inspiration: https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/tree/master/8.%20Save%20High%20Scores%20in%20Local%20Storage
 
 /* Def. der Konstanten. Username wid vermutlich obsolet - sollte ja übermittelt werden.  */
+const username1 = document.getElementById('post_name'); /* TODO Sabrina evt anpassen wenn API angepasst */
 const username = document.getElementById('username');
 const saveScoreBtn = document.getElementById('saveScoreBtn');
 const finalScore = document.getElementById('finalScore');
