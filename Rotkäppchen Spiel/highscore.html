@@ -38,7 +38,7 @@
             /* evt brauche ich URL erneut...*/
         </script>
 
-        <p>Du hast bei denem letzten Spiel <b id="finalScore"> </b> Punkte gemacht.</p>  
+        <p>Du hast bei deinem letzten Spiel <b id="finalScore"> </b> Punkte gemacht.</p>  
         <p>Möchtest du die Punkte in deine Highscoreliste speichern?</p>         
         
 
@@ -52,7 +52,7 @@
                 />
                 <!-- CSS TODO, aber aktuell nur "saveScoreBtn" verwendet--> 
                 <!-- musste aktuell (21.05) auch "disabled" rausnehmen. Funktionierte nicht richtig.--> 
-
+<!--onclick="saveHighScore(event)"-->
                 <button       
                 type="submit"  
                 class="btn"     
@@ -72,11 +72,11 @@
     <script src="js/highscore.js"></script>
     <br>
     <br>
-    <a href="spiel.html">Nochmals spielen</a>
+    <a href="spiel.html" class="button-decoration">Nochmals spielen</a><br><br>
+    <a href="index.html">zur Home-Seite</a>
 
 
-    <!--Design für Formatierung Button inkl Schrif ist in CSS unter a:link (...) zu finden.-->
-    <!--Alle Buttons auf allen html haben dieselbe Formatierung.-->
+    <!--Design für Formatierung Button inkl Schrif ist in CSS unter button-decoration:link (...) zu finden.-->
 
 
     <br>

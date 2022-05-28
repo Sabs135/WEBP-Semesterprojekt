@@ -15,17 +15,23 @@ body {
 }
 
 a:link, a:visited {
-    background-color: black;
     color: white;
-    padding: 15px 25px;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button-decoration:link, .button-decoration:visited {
+    background-color: black;
+    
+    padding: 15px 25px;
+    
     text-decoration: none;
     display: inline-block;
     border-radius: 25px;
-    font-family: Arial, Helvetica, sans-serif;
+   
   }
   
-  a:hover, a:active {
+.button-decoration:hover, .button-decoration:active {
     background-color: grey;
   }
 
@@ -199,3 +205,4 @@ button[disabled]{
     margin-bottom: 10px;
     font-size: 20px;
 }
+

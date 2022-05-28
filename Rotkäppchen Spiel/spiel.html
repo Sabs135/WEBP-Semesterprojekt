@@ -20,11 +20,12 @@
      console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
     window.onload = function() {
-            document.getElementById('post_name').innerText = "Viel Erfolg beim Spielen " + JSON.parse(localStorage.getItem('name')) + "!";
+            document.getElementById('post_name').innerText = "Viel Erfolg beim Spielen " + JSON.parse(localStorage.getItem('name')) + "!"; 
         };
         /* das 'post_name' bezieht sich auf die id='post_name' weiter oben im html. Das ist der Platzhalter 
         wo mein Text/Name reinkommt /*
         JSON.parse damit das Objekt nicht in "" erscheint /*
+        //post_name kommt vom login.html, Benutzername welcher sich eingelogt hat
 
 
         /*https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page 
@@ -35,9 +36,10 @@
     <p>Vergiss nicht deinen Highscore zu speichern, wenn er in deine Top 5 soll!</p>
 
     <br>
-    <a href="login.html">Zurück</a>
+    
 
-    <a href="highscore.html">Highscore speichern</a>
+    <a href="highscore.html" class="button-decoration">Highscore speichern</a> &nbsp; &nbsp;
+    <a href="login.html">Zurück</a>
     
     <!--Design für Formatierung Button inkl Schrif ist in CSS unter a:link (...) zu finden.-->
     <!--Alle Buttons auf allen html haben dieselbe Formatierung.-->
@@ -50,7 +52,7 @@
 
             <button class="btn-open-messenger" onclick="toggleText()">Messenger öffnen</button>
 
-        <div class="container" id="Myid">
+        <div class="container" id="messenger-button">
             
             <!-- Quelle: https://dev.to/inezabonte/how-to-make-a-mini-messenger-with-javascript-for-beginners-mm3 -->  
                 <h2>Messenger</h2>
