@@ -37,7 +37,7 @@
             /*https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page 
             /* evt brauche ich URL erneut...*/
         </script>
-
+        <p id="username"></p>   
         <p>Du hast bei deinem letzten Spiel <b id="finalScore"> </b> Punkte gemacht.</p>  
         <p>Möchtest du die Punkte in deine Highscoreliste speichern?</p>         
         
@@ -45,11 +45,8 @@
 
             <form>
                 <!-- CSS TODO, fällt vermutlich eh weg wege Login -> API--> 
-                <input
-                type="text"
-                name="username"
-                id="username"
-                />
+                
+
                 <!-- TODO in CSS aber aktuell nur "saveScoreBtn" verwendet--> 
                 <!-- musste aktuell (21.05) auch "disabled" rausnehmen. Funktionierte nicht richtig.--> 
 <!--onclick="saveHighScore(event)"-->

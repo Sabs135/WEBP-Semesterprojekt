@@ -2,7 +2,7 @@
 
 /* Def. der Konstanten. Username wid vermutlich obsolet - sollte ja übermittelt werden.  */
 //const username1 = document.getElementById('post_name'); /* TODO Sabrina evt anpassen wenn API angepasst */
-const username = document.getElementById('username');
+username = document.getElementById('username');
 const saveScoreBtn = document.getElementById('saveScoreBtn');
 const finalScore = document.getElementById('finalScore');
 const mostRecentScore = parseInt(localStorage.getItem('mostRecentScore'));  /* beachte game.js wo mostRecentStore 2x gesetzt wird: win & lose */
@@ -10,8 +10,9 @@ const highScoresList = document.getElementById("highScoresList");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || []; /* wir schauen was in localstorage ist und geben das zurück, ODER wenn da nichts ist, soll ein leerer Array zurückkommen */
 var score = []; //hier werden die HighScores reingeschrieben
 var name = JSON.parse(localStorage.getItem("name")); //name von Local Storage nehmen
-var spielerid = localStorage.getItem("spielerid"); //name von Local Storage nehmen
-const text = username.value.trim(); //leere Nachrichten entdecken & ignorieren
+var spielerid = localStorage.getItem("spielerid"); //spielerid von Local Storage nehmen
+
+username.innerHTML = 'Eingeloggt als: <b>' + name + '</b>'; //übernimmt Name vom Local Storage
 
 const MAX_HIGH_SCORES = 5; /* meine letzten X Highscores anzeigen */
 
@@ -28,7 +29,7 @@ username.addEventListener('keyup', () => {
 //-------------------- Neuen High Score speichern API --------------------//
 
 saveHighScore = (e) => {
-    e.preventDefault();     // verhindert, dass es woanders hingepostet wird. Muss das evt weg bei API Post?
+    //e.preventDefault();     // verhindert, dass es woanders hingepostet wird. Muss das evt weg bei API Post?
     fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/publicscore/', {
         method: 'POST', 
         body: JSON.stringify({
@@ -57,7 +58,6 @@ saveHighScore = (e) => {
   })
   .then(data => console.log('Success:', data))
   .catch(error => console.error('Error:', error)); //Error abfangen
-  window.location.reload(); //automatischer Reload, damit der High Score angezeigt wird
 };
 
 //-------------------- High Score laden --------------------//
