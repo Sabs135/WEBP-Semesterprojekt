@@ -339,17 +339,11 @@ scene("game", ({ level, score }) => {
             score: scoreLabel.value, 
             level: level,
         })
-
-
-        })
+    })
         
-        
-        localStorage.setItem('score', scoreLabel.value),
-        localStorage.setItem('level', level)
-        
-        
-    
-
+    localStorage.setItem('score', scoreLabel.value),
+    localStorage.setItem('level', level)
+ 
     //----------------------Ende Pause einleiten-------------------------------//
 
 })
@@ -396,24 +390,14 @@ scene('pause', ({ score, level}) => {
         go('game',{   
             score: localStorage.getItem('score'),
             level: level
-        })
-           
+        })       
     })
-    
-   
-    
-    
-    
 })
-
-
 
 //---------------------------Ende Pausenfenster-------------------------------------//
 
 /* Die oben definierte Scene "game" wird gestartet und Level / Score starten bei Null */ 
 start("game", { level: 0, score:0})
-
-
 
 
 //----------------------------------------------------------------------------//

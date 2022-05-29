@@ -8,62 +8,44 @@
     <title>Rotkäppchen Spiel</title>
     
 </head>
-<body class='game-seite'>
+<body>
     <h1>Rotkäppchen Spiel</h1>
-
     <p id="post_name"></p> <!-- siehe game.js -->
-    
     <p>Möchtest du mit den Mitspieler:innen chatten? Unten rechts kannst du den Messenger öffnen</p>
     <p>Vergiss nicht deinen Highscore zu speichern, wenn er in deine Top 5 soll!</p>
     <p>Um eine Pause einzulegen, einfach die Taste "p" klicken.</p> 
     <br>
-    
-
     <a href="highscore.html" class="button-decoration">Highscore speichern</a> &nbsp; &nbsp;
     <a href="login.html">Zurück</a>
-    
-    <!--Design für Formatierung Button inkl Schrif ist in CSS unter a:link (...) zu finden.-->
-    <!--Alle Buttons auf allen html haben dieselbe Formatierung.-->
     <br>
     <br>
+    <script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
+    <script src="js/game.js"></script>
+    <br>
 
-            <script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
-            <script src="js/game.js"></script>
-            <br>
-    
-    
-    
+    <!--------- Start Messenger --------->
+    <!-- Quelle: https://dev.to/inezabonte/how-to-make-a-mini-messenger-with-javascript-for-beginners-mm3 -->  
 
-
-            <button class="btn-open-messenger" onclick="toggleText()">Messenger öffnen</button>
-
+    <button class="btn-open-messenger" onclick="toggleText()">Messenger öffnen</button>
         <div class="container" id="messenger-button">
             
-            <!-- Quelle: https://dev.to/inezabonte/how-to-make-a-mini-messenger-with-javascript-for-beginners-mm3 -->  
-                <h2>Messenger</h2>
-                <button class="btn-close-messenger" onclick="toggleText()">x</button>
-
-                <!-- Hier sind alle Nachrichten zu sehen -->
-                <h4>Alle vergangenen Nachrichten</h4>
+            <h2>Messenger</h2>
+            <button class="btn-close-messenger" onclick="toggleText()">x</button>
+            <!-- Hier sind alle Nachrichten zu sehen -->
+            <h4>Alle vergangenen Nachrichten</h4>
                 <div class="messages" id="post_msg">
                     <div id="new_msg"></div>
                 </div>
                 
-
-                <!-- Nachricht schreiben & Abschicken -->
+            <!-- Nachricht schreiben & Abschicken -->
                 <form class="message-form" id="post_form" method="post">
-                    <p id="name_message"></p>
                     <input type="text" class="typedMessage" id="form_post_msg" placeholder="Schreib hier deine Nachricht..." autofocus>
-
                     <input class="submit" type="submit"></input>
                 </form>    
-                
-           
         </div>
-
-
         <script type='text/Javascript' src='js/script_messenger.js'></script>
 
+ <!--------- Ende Messenger --------->
 
 </body>
 </html>

@@ -3,14 +3,12 @@
 var post_form = document.getElementById('post_form')
 
 name_message=document.getElementById("name_message")
-var name = JSON.parse(localStorage.getItem("name"));
-name_message.innerHTML = 'Eingeloggt als: ' + name; //übernimmt Name vom Local Storage
+var name_local = JSON.parse(localStorage.getItem("name"));
 
 post_form.addEventListener('submit', function(e) {
     e.preventDefault()
 
     var messageid = Date.now()
-    //var name = document.getElementById('form_post_author')
     var msg = document.getElementById('form_post_msg').value
     const input = document.querySelector('.typedMessage');
     const text = input.value.trim(); //leere Nachrichten entdecken & ignorieren
@@ -20,7 +18,7 @@ post_form.addEventListener('submit', function(e) {
         method: 'POST', 
         body: JSON.stringify({
             messageid:messageid,
-            name:name,
+            name:name_local,
             msg:msg,
     }),
 
@@ -52,7 +50,7 @@ post_form.addEventListener('submit', function(e) {
 
 //-------------------- Laden der vergangenen Messages --------------------//
 
-let lastMsg = [] //Hier werden die IDs gepseichert für die Anzeige
+let lastMsg = [] //Hier werden die IDs gespeichert für die Anzeige
 
 function loadMsgs() {
     fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/message/')
@@ -141,7 +139,7 @@ function loadMsgs() {
             });
     }
 
-//Quelle (angelehnt han): https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/async_function
+//Quelle (angelehnt an): https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/async_function
 var load = function() {   //schauen ob es neue Nachrichten in der API gibt
     return new Promise(resolve => {
       setTimeout(function() {

@@ -8,26 +8,27 @@
 
     <link rel="stylesheet" href="style/style.css">
 </head>
-<body class='vertikal-flex'>
+<body>
     
-        <h1>Login</h1>
-        <p>Hallo Spieler:in! Logg dich bitte ein. Wenn es deinen Benutzername noch nicht gibt, wirst du automatisch registriert.</p> 
+   <h1>Login</h1>
+   <p>Hallo Spieler:in! Logg dich bitte ein. Wenn es deinen Benutzername noch nicht gibt, wirst du automatisch registriert.</p> 
 
-<!-- START USER HINZUFÜGEN -->
-       <form id="form" method="post">
-            <input type="text", id="form_post_name" placeholder="Benutzername" required minlength="5" maxlength="20"/>
-            <input type="submit" id="btn1" value="Add"/>
-       </form>
-            <!-- Hinweise zum Form -->
-            <!-- required hinzugefügt, dass nur gesendet werden kann, wenn Name vorhanden -->
-            <!-- minlength: Meldung erscheint wenn zu kurz, bei maxlength nicht. -->
+   <!-- START USER HINZUFÜGEN -->
+   <form id="form" method="post">
+      <input type="text", id="form_post_name" placeholder="Benutzername" required minlength="5" maxlength="20"/>
+      <input type="submit" id="btn1" value="Add"/>
+      <!-- Hinweise zum Form -->
+      <!-- required hinzugefügt, dass nur gesendet werden kann, wenn Name vorhanden -->
+      <!-- minlength: Meldung erscheint wenn zu kurz, bei maxlength nicht. -->
+   </form>
+            
   
-         <div>
-            <p id="show_user"></p>
-         </div>
-         <p>&nbsp;</p>
+   <div>
+      <p id="show_user"></p>
+   </div>
+   <p>&nbsp;</p>
 
-<!-- END USER HINZUFÜGEN -->
+   <!-- END USER HINZUFÜGEN -->
 
 <script src="js/login.js"></script>
 
@@ -41,7 +42,7 @@
    function showBtn(e) { 
       document.querySelector('#btn2').style.visibility = 'visible';  // setzt Btn auf sichtbar
    }
-   </script>
+</script>
 <br>
 <br>
 <br>

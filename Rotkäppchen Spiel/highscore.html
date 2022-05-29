@@ -8,57 +8,27 @@
     <title>Highscore: Rotkäppchen Spiel</title>
     
 </head>
-<body class='game-seite'>
-    <div class="container_hs"> <!--CSS TODO--> 
-
+<body>
+    <div class="container_hs"> <!--TODO CSS Vermutlich class löschen? --> 
     <!-- Quelle: https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/tree/master/8.%20Save%20High%20Scores%20in%20Local%20Storage -->
+    <!-- https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page -->
+
         <div>  <!--CSS TODO--> 
-        <h1>Highscores</h1>
-        <p id="post_name"></p>
-
-        <script>
-            /*ich fasse diese Teile von highscore.htmlt un den von spiel.html dann zusammen und werde wohl ein separates .js machen */
-            var retrievedObject = localStorage.getItem('userDetails');
-            console.log('retrievedObject: ', JSON.parse(retrievedObject));
-            
-            /* vermutlich löschen? */ 
-            window.onload = function() {
-                document.getElementById('post_name').innerText = "Ciao " + JSON.parse(localStorage.getItem('name'));
-                /* .innerText oder .value ? */
-            };
-            /* das 'post_name' bezieht sich auf die id='post_name' weiter oben im html. Das ist der Platzhalter 
-            wo mein Text/Name reinkommt */
-
-            window.onload = function() {
-                document.getElementById('username').value = JSON.parse(localStorage.getItem('name'));
-                /* .innerText oder .value ? */
-            };
-
-            /*https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page 
-            /* evt brauche ich URL erneut...*/
-        </script>
-        <p id="username"></p>   
-        <p>Du hast bei deinem letzten Spiel <b id="finalScore"> </b> Punkte gemacht.</p>  
-        <p>Möchtest du die Punkte in deine Highscoreliste speichern?</p>         
-        
-
-
-            <form>
-                <!-- CSS TODO, fällt vermutlich eh weg wege Login -> API--> 
-                
-
-                <!-- TODO in CSS aber aktuell nur "saveScoreBtn" verwendet--> 
-                <!-- musste aktuell (21.05) auch "disabled" rausnehmen. Funktionierte nicht richtig.--> 
-<!--onclick="saveHighScore(event)"-->
-                <button       
-                type="submit"  
-                class="btn"     
-                id="saveBtn"
-                onclick="saveHighScore(event)"
-                >
-                Speichern
-                </button>
-            </form>
+            <h1>Highscores</h1>
+            <p id="username"></p>   
+            <p>Du hast bei deinem letzten Spiel <b id="finalScore"> </b> Punkte gemacht.</p>  
+            <p>Möchtest du die Punkte in deine Highscoreliste speichern?</p>         
+                <form>
+                    <!-- TODO in CSS aber aktuell nur "saveScoreBtn" verwendet--> 
+                    <button       
+                    type="submit"  
+                    class="btn"     
+                    id="saveBtn"
+                    onclick="saveHighScore(event)"
+                    >
+                    Speichern
+                    </button>
+                </form>
         </div>
         <div id="highScores">
             <h2 id="finalScore">Das sind deine 5 besten Spielergebnisse:</h2>
@@ -66,24 +36,13 @@
         </div>    
     </div>
 
-    <script src="js/highscore.js"></script>
-    <br>
-    <br>
-    <a href="spiel.html" class="button-decoration" >Nochmals spielen</a><br><br>
-    <br>
-    <p>Klicke auf die Home-Seite um dich nochmals neu einzuloggen</p>
-    <a href="index.html" onclick="localStorage.clear()">zur Home-Seite</a>  
-    <!-- löscht Local Storage -->
-
-
-    <!--TODO Diesen Satz hiere überall (jedes html) löschen -->
- 
-    <!--Design für Formatierung Button inkl Schrif ist in CSS unter button-decoration:link (...) zu finden.-->
-
-
-    <br>
-    <br>
-    <script>
- </script>
+<script src="js/highscore.js"></script>
+<br>
+<br>
+<a href="spiel.html" class="button-decoration" >Nochmals spielen</a><br><br>
+<br>
+<p>Klicke auf die Home-Seite um dich nochmals neu einzuloggen</p>
+<a href="index.html" onclick="localStorage.clear()">zur Home-Seite</a>  
+<!-- löscht Local Storage -->
 </body>
 </html>

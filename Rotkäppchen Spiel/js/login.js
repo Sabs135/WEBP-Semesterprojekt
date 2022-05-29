@@ -17,20 +17,13 @@ var form = document.getElementById('form')
 
 form.addEventListener('submit', function(e) {
     e.preventDefault()
-
-    /*verstehe nicht wieso, aber ich muss beide Zeilen hier lassen, sonst gab es einen Fehler */
-    /*sollte bereinigt werden */
-    /*ABER: bitte nachfolgende 6 Zeilen Code NICHT einfach so löschen... */
     
     var name = document.getElementById('form_post_name').value
     var id = Date.now()
     localStorage.setItem('name', JSON.stringify(name));  /* Brauche ich für Anzeige auf spiel.html und highscore.html */
     localStorage.setItem('spielerid', JSON.stringify(id)); //Spieler ID in local Sotrage speichern (für den Highscore, damit da die Spielerid mitgegeben werden kann)
-    
-    /* könnte ich auch anstatt JSON.stringify(name) einfach name.value schreiben?? */
 
-
-    //braucht es das? 
+    //Anzeige in Konsole bzw. für RetrievedObject später
     const userDetails = {
         name: name = document.getElementById('form_post_name').value,
         id: id = Date.now()
@@ -90,7 +83,7 @@ form.addEventListener('submit', function(e) {
                 .then(function(data)
                     {console.log(data)
                     show_user=document.getElementById("show_user")
-                    text = '<p>Herzlich Willkommen! <b>' + data.name + '</b> wurde neu registriert.</p> <p> Deine Spieler-ID ist: ' + data.spielerid + '</p>'
+                    text = '<p>Herzlich Willkommen! <b>' + data.name + '</b> wurde neu registriert.</p> <p> Deine Spieler-ID ist: <b>' + data.spielerid + '</b></p>'
                     show_user.innerHTML = text
                     })
                 .catch(error => console.error('Error:', error)); //Error abfangen
