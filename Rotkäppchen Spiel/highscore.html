@@ -50,7 +50,7 @@
                 name="username"
                 id="username"
                 />
-                <!-- CSS TODO, aber aktuell nur "saveScoreBtn" verwendet--> 
+                <!-- TODO in CSS aber aktuell nur "saveScoreBtn" verwendet--> 
                 <!-- musste aktuell (21.05) auch "disabled" rausnehmen. Funktionierte nicht richtig.--> 
 <!--onclick="saveHighScore(event)"-->
                 <button       
@@ -72,10 +72,15 @@
     <script src="js/highscore.js"></script>
     <br>
     <br>
-    <a href="spiel.html" class="button-decoration">Nochmals spielen</a><br><br>
-    <a href="index.html">zur Home-Seite</a>
+    <a href="spiel.html" class="button-decoration" >Nochmals spielen</a><br><br>
+    <br>
+    <p>Klicke auf die Home-Seite um dich nochmals neu einzuloggen</p>
+    <a href="index.html" onclick="localStorage.clear()">zur Home-Seite</a>  
+    <!-- löscht Local Storage -->
 
 
+    <!--TODO Diesen Satz hiere überall (jedes html) löschen -->
+ 
     <!--Design für Formatierung Button inkl Schrif ist in CSS unter button-decoration:link (...) zu finden.-->
 
 

@@ -11,26 +11,7 @@
 <body class='game-seite'>
     <h1>Rotkäppchen Spiel</h1>
 
-    <p id="post_name"></p>
-
-    <script>
-    /* Script von highscore.htmlt & spiel.html zusammenfassen für separates .js ?? Too check... Aktuell nicht 1:1 gleich */
-    /* für die Anzeige in der Konsole */
-    var retrievedObject = localStorage.getItem('userDetails');
-     console.log('retrievedObject: ', JSON.parse(retrievedObject));
-
-    window.onload = function() {
-            document.getElementById('post_name').innerText = "Viel Erfolg beim Spielen " + JSON.parse(localStorage.getItem('name')) + "!"; 
-        };
-        /* das 'post_name' bezieht sich auf die id='post_name' weiter oben im html. Das ist der Platzhalter 
-        wo mein Text/Name reinkommt /*
-        JSON.parse damit das Objekt nicht in "" erscheint /*
-        //post_name kommt vom login.html, Benutzername welcher sich eingelogt hat
-
-
-        /*https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page 
-        /* evt brauche ich URL erneut...*/
-    </script>
+    <p id="post_name"></p> <!-- siehe game.js -->
     
     <p>Möchtest du mit den Mitspieler:innen chatten? unten rechts kannst du den Messenger öffnen</p>
     <p>Vergiss nicht deinen Highscore zu speichern, wenn er in deine Top 5 soll!</p>

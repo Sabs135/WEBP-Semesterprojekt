@@ -1,15 +1,39 @@
 /* Anmerkungen zu den Quellen: Alle Quellen zum Game sind zuunterst zu finden */
 
+
+//-------- Start LocalStorage ---------/
+
+/* für die Anzeige in der Konsole */
+var retrievedObject = localStorage.getItem('userDetails');
+    console.log('retrievedObject: ', JSON.parse(retrievedObject));
+
+window.onload = function() {
+        document.getElementById('post_name').innerText = "Viel Erfolg beim Spielen " + JSON.parse(localStorage.getItem('name')) + "!"; 
+    };
+    /* 
+    Notizen:
+    'post_name' 
+    ---> 1. kommt vom login.html, Benutzername welcher sich eingelogt hat
+    ---> 2. wird in spiel.html dort angezeigt wo id='post_name' ist
+    JSON.parse damit das Objekt nicht in "" erscheint /*
+    */
+
+//-------- Ende LocalStorage ---------/
+
+//-------- Start grundsätzliche Einstellungen zum Spiel ---------//
+
 kaboom({
     global: true, 
-    //fullscreen: true,//
-    width: 1300,
+    //fullscreen: true,//           /* in Ursprungscode (WEBP) war auf fullscreen */
+    width: 1300,                    /* Grösse so angepasst, damit es gut in Browserfenster passt */
     scale: 1,                       /*vergrössert alles, je höher die Zahl*/
     debug: true,                    /*zeigt alle Fehler direkt an*/
     clearColor: [0,0,0,1],      /* definiert Hintergrundfarbe. RGBA color value */
 })
 
-//-------- Start Definition Konstanten ---------/
+//-------- Ende grundsätzliche Einstellungen zum Spiel ---------//
+
+//-------- Start Definition Konstanten ---------//
 
 /* die Konstanten werden weiter unten verwendet */
 const MOVE_SPEED = 120 
@@ -410,5 +434,7 @@ mawwyncha. (2014). Sprites. Verfügbar unter https://imgur.com/gallery/eYw55 of_
 
 Code with Ania Kubów. (2021). Code Mario in JavaScript with Kaboom.js! [Video]. https://www.youtube.com/watch?v=2nucjefSr6I
 Kaboom.js. Verfügbar unter https://kaboomjs.com/
+Stackoverflog. Verfügbar unter https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page 
+
 
 */
