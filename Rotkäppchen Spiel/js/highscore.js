@@ -24,6 +24,10 @@ finalScore.innerText = mostRecentScore; //zeigt den mostRecentScore beim Text an
 var retrievedObject = localStorage.getItem('userDetails');
 console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
+//Seiten-Reload für den Button
+reload = (e) => {
+  location.reload()
+}
 
 //-------------------- Neuen High Score speichern API --------------------//
 
