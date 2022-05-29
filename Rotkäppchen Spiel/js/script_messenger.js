@@ -2,11 +2,15 @@
 
 var post_form = document.getElementById('post_form')
 
+name_message=document.getElementById("name_message")
+var name = JSON.parse(localStorage.getItem("name"));
+name_message.innerHTML = 'Eingeloggt als: ' + name; //übernimmt Name vom Local Storage
+
 post_form.addEventListener('submit', function(e) {
     e.preventDefault()
 
     var messageid = Date.now()
-    var name = document.getElementById('form_post_author')
+    //var name = document.getElementById('form_post_author')
     var msg = document.getElementById('form_post_msg').value
     const input = document.querySelector('.typedMessage');
     const text = input.value.trim(); //leere Nachrichten entdecken & ignorieren
@@ -16,7 +20,7 @@ post_form.addEventListener('submit', function(e) {
         method: 'POST', 
         body: JSON.stringify({
             messageid:messageid,
-            name:name.value,
+            name:name,
             msg:msg,
     }),
 
