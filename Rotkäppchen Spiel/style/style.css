@@ -1,8 +1,12 @@
+/* Defintion Variablen */
 :root {
     --primary-color: #f4a460;
     --secondary-color: #2B2B2B;
     --main-font: Arial, Helvetica, sans-serif;
-    --text-color: black;
+    --black-text-color: black;
+    --white-text-color: white;
+    --black-button-color: black;
+    --grey-button-color: grey;
 } 
 
 body {
@@ -13,67 +17,57 @@ body {
     text-align: center;
     overflow-y: scroll;
     font-family: var(--main-font);
-
 }
 
-a:link, a:visited {
-    color: white;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+p {
+    font-size: 20px;
 }
-
-.button-decoration:link, .button-decoration:visited {
-    background-color: black;
-    
-    padding: 15px 25px;
-    
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 25px;
-   
-  }
-  
-.button-decoration:hover, .button-decoration:active {
-    background-color: grey;
-  }
-
-
-  #saveBtn{
-    padding: 10px;
-    border-radius: 5px;
-    font-family: var(--main-font);
-    font-size: 15px;
-    color: white;
-    background-color: var(--secondary-color);
-    border-style: none;
-}
-
-#saveBtn:hover {
-    background-color: grey;
-}
-  p {
-      font-size: 20px;
-  }
 
 header {
     background-image: url(../img/wald.jpeg) ;
     padding: 20px;
     text-align: center;
     font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-}
-TODO /* sollen wir hier einfach eine Klasse draus machen und die in den 3 html hinterlegen? 
-ansttatt section / .vertikal-flex / .game-seite */
+    font-family: var(--main-font);
+    color: var(--black-text-color);}
 
-
-
+    /* TODO  --- Wofür ist hr? */
 hr {
-    background-color: black;
+    background-color: var(--black-button-color);
 }
 
+/* Buttons und Links (ausser Messenger) */ 
+a:link, a:visited {
+    color: var(--white-text-color);
+    text-align: center;
+    font-family: var(--main-font);
+}
 
+.button-decoration:link, .button-decoration:visited {
+    background-color: var(--black-button-color);
+    padding: 15px 25px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 25px;
+}
+  
+.button-decoration:hover, .button-decoration:active {
+    background-color: var(--grey-button-color);
+}
 
+#saveBtn{
+    background-color: var(--secondary-color);
+    padding: 10px;
+    font-family: var(--main-font);
+    font-size: 15px;
+    color: var(--white-text-color);
+    border-style: none;
+    border-radius: 5px;
+}
+
+#saveBtn:hover {
+    background-color: var(--grey-button-color);
+}
 
 /* Style für den Messenger */
 .container{
@@ -98,7 +92,7 @@ input{
     border-style: none;
     background-color: var(--secondary-color);
     font-size: 15px;
-    color: white;
+    color: var(--white-text-color);
 }
 
 .messages{
@@ -107,7 +101,7 @@ input{
     padding-right:25px;
     padding-bottom: 5px;
     margin:30px;
-    color: var(--text-color);
+    color: var(--black-text-color);
     height: 200px;
     overflow-x: hidden;
     position: relative;
@@ -128,29 +122,19 @@ input{
 }
 
 .submit{
-    padding: 8px;
+    padding: 11px;
     border-radius: 5px;
     font-family: var(--main-font);
     font-size: 15px;
-    color: white;
+    color: var(--white-text-color);
     background-color: var(--secondary-color);
     border-style: none;
 }
 
-
 .submit:hover {
-    background-color: grey;
+    background-color: var(--grey-button-color);
 }
 
-/* geht grad irgendwie nicht 
-.submit:disabled,
-button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}
-  */
-  
 .btn-open-messenger {
     position: fixed;
     bottom: 0;
@@ -160,13 +144,13 @@ button[disabled]{
     border-radius: 5px;
     font-family: var(--main-font);
     font-size: 15px;
-    color: white;
+    color: var(--white-text-color);
     background-color: var(--secondary-color);
     border-style: none;
 }
 
 .btn-open-messenger:hover {
-    background-color: grey;
+    background-color: var(--grey-button-color);
 }
 
 .btn-close-messenger {
@@ -181,31 +165,7 @@ button[disabled]{
     border-style: none;
 }
 
-
-#saveBtn{
-    padding: 10px;
-    border-radius: 5px;
-    font-family: var(--main-font);
-    font-size: 15px;
-    color: white;
-    background-color: var(--secondary-color);
-    border-style: none;
-}
-
-#saveBtn:hover {
-    background-color: grey;
-}
- /*
-#saveBtn:disabled {
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}
-*/
-
 /* Style für Highscores */
-
-/* Eigentlich wollte ich die Liste mit 1., 2. usw haben, aber auf Chrome kleben die Nr immer links und nicht in der Mitte  */
 #highScoresList {
     padding-left: 0;
   }
@@ -215,4 +175,3 @@ button[disabled]{
     margin-bottom: 10px;
     font-size: 20px;
 }
-

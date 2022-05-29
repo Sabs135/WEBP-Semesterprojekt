@@ -9,20 +9,17 @@
     
 </head>
 <body>
-    <div class="container_hs"> <!--TODO CSS Vermutlich class löschen? --> 
+    <div>
     <!-- Quelle: https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript/tree/master/8.%20Save%20High%20Scores%20in%20Local%20Storage -->
     <!-- https://stackoverflow.com/questions/35329180/localstorage-save-name-through-form-show-on-other-page -->
-
-        <div>  <!--CSS TODO--> 
+        <div> 
             <h1>Highscores</h1>
             <p id="username"></p>   
             <p>Du hast bei deinem letzten Spiel <b id="finalScore"> </b> Punkte gemacht.</p>  
             <p>Möchtest du die Punkte in deine Highscoreliste speichern?</p>         
                 <form>
-                    <!-- TODO in CSS aber aktuell nur "saveScoreBtn" verwendet--> 
                     <button       
                     type="submit"  
-                    class="btn"     
                     id="saveBtn"
                     onclick="saveHighScore(event)"
                     >
