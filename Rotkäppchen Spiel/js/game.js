@@ -361,7 +361,7 @@ scene("game", ({ level, score }) => {
 scene('lose', ({ score}) => {                                                           /*Text beim Game-Over*/
     add([text('Game over', 50), origin('center'), pos(width()/2, height()/3)]);      /*zeigt bei Game-Over den Begriff Game over an*/
     add([text('Du hast ' + score + ' Punkte gesammelt', 30), origin('center'), pos(width()/2, height()/2)]);          /*zeigt bei Game-Over den Punktestand an*/
-    add([text('Versuch es nochmal', 30), origin('center'), pos(width()/2, height()/1.5)]);
+    add([text('Nochmal spielen: klicke die Leertaste', 25), origin('center'), pos(width()/2, height()/1.5)]);
     
     localStorage.setItem("mostRecentScore", score); /* setzt meinen letzten Spielstand in Localstorage */
     
@@ -376,7 +376,7 @@ scene('lose', ({ score}) => {                                                   
 scene('win', ({ score}) => {
     add([text('Du hast gewonnen', 50), origin('center'), pos(width()/2, height()/3)]);
     add([text('Du hast ' + score + ' Punkte gesammelt', 30), origin('center'), pos(width()/2, height()/2)]);
-    add([text('Willst du noch einmal spielen?', 30), origin('center'), pos(width()/2, height()/1.5)]);
+    add([text('Nochmal spielen, klicke die Leertaste', 30), origin('center'), pos(width()/2, height()/1.5)]);
     
     localStorage.setItem("mostRecentScore", score); /* setzt meinen letzten Spielstand in Localstorage */
     
@@ -390,7 +390,8 @@ scene('win', ({ score}) => {
 
 //----------------------------Start Pausenfenster -----------------------------------//
 scene('pause', ({ score, level}) => {
-    add([text('See you later', 50), origin('center'), pos(width()/2, height()/3)]); 
+    add([text('See you later', 50), origin('center'), pos(width()/2, height()/3)]);
+    add([text('Um weiterzuspielen "b" klicken', 30), origin('center'), pos(width()/2, height()/2)]) 
     keyPress('b', () => {
         go('game',{   
             score: localStorage.getItem('score'),
@@ -399,7 +400,7 @@ scene('pause', ({ score, level}) => {
            
     })
     
-    add([text('Zurueck zum Spiel', 30), origin('center'), pos(width()/2, height()/1.5)]);
+   
     
     
     
