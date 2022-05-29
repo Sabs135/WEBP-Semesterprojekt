@@ -1,8 +1,18 @@
 
-//USER HINZUFÜGEN
+//-------- START "Zum Spiel"-Button Logik ---------/
+
+// Button erscheint erst, wenn User ge-added 
+
+/* wieso funktioniert es hier drin nicht?? */ 
+
+
+
+//-------- ENDE "Zum Spiel"-Button Logik ---------/
+
+//-------- START USER hinzufügen ---------/
+
 const userDetails = JSON.parse(localStorage.getItem("userDetails")) || [];
 var form = document.getElementById('form')
-
 
 
 form.addEventListener('submit', function(e) {
@@ -49,7 +59,7 @@ form.addEventListener('submit', function(e) {
             if (result.find(findName) != undefined) { //schaut ob eigetragener Name in der API zu finden ist --> wenn ja geht es hier weiter
                 index = result.indexOf(result.find(findName));
                 show_user=document.getElementById("show_user")
-                text = '<p>Du konntest dich erfolgreich einloggen <b>' + result[index].name + '</b>!</p> <p> Deine Spieler-ID ist: ' + result[index].spielerid + '</p>'
+                text = '<p>Du konntest dich erfolgreich einloggen <b>' + result[index].name + '</b>!</p> <p> Deine Spieler-ID ist: <b>' + result[index].spielerid + '</b></p>'
                 show_user.innerHTML = text; //anzeige des Textes auf der Seite
             } 
 
@@ -87,3 +97,5 @@ form.addEventListener('submit', function(e) {
             }
         });
 });
+
+//-------- ENDE USER hinzufügen ---------/

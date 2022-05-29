@@ -11,39 +11,41 @@
 <body class='vertikal-flex'>
     
         <h1>Login</h1>
-        <p id='result'></p> <!-- wofür ist das??-->
         <p>Hallo Spieler:in! Logg dich bitte ein. Wenn es deinen Benutzername noch nicht gibt, wirst du automatisch registriert.</p> 
 
 <!-- START USER HINZUFÜGEN -->
        <form id="form" method="post">
             <input type="text", id="form_post_name" placeholder="Benutzername" required minlength="5" maxlength="20"/>
-            <input type="submit" value="Add"/>
+            <input type="submit" id="btn1" value="Add"/>
        </form>
             <!-- Hinweise zum Form -->
             <!-- required hinzugefügt, dass nur gesendet werden kann, wenn Name vorhanden -->
             <!-- minlength: Meldung erscheint wenn zu kurz, bei maxlength nicht. -->
   
          <div>
-            <!--  <h3>The Following data is successfuly posted</h3>  -->
             <p id="show_user"></p>
-            <!--<p>Herzlich willkommen: <b id="post_name"></b></p>
-            <p>Deine ID ist: <b id="post_id"></b></p>-->
          </div>
-         <p>&nbsp;</p> <!-- wofür ist das??-->
+         <p>&nbsp;</p>
 
 <!-- END USER HINZUFÜGEN -->
 
 <script src="js/login.js"></script>
 
-<a href="spiel.html" class="button-decoration">Zum Spiel</a>
-
-<a href="highscore.html" class="button-decoration">Zum Highscore</a>
-<br>
+<a href="spiel.html" class="button-decoration" id="btn2" >Zum Spiel</a>
+<script>
+   /* wieso funktioniert das nicht wenn ich es in login.js habe....?  */
+   
+   document.querySelector('#btn2').style.visibility = 'hidden'; // Btn per Default hidden
+   document.querySelector('#btn1').addEventListener('click', showBtn); // Löst die Funktion ShowBtn aus
+    
+   function showBtn(e) { 
+      document.querySelector('#btn2').style.visibility = 'visible';  // setzt Btn auf sichtbar
+   }
+   </script>
 <br>
 <br>
 <br>
 <a href="index.html">Zurück</a>
-<!--Design für Formatierung Button inkl Schrif ist in CSS unter a:link (...) zu finden.-->
-<!--Alle Buttons auf allen html haben dieselbe Formatierung.-->
+
 </body>
 </html>
