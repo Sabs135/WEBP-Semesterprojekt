@@ -1,11 +1,14 @@
-
 //-------- START "Zum Spiel"-Button Logik ---------/
 
 // Button erscheint erst, wenn User ge-added 
-
-/* wieso funktioniert es hier drin nicht?? */ 
-
-
+   // Quelle der Inspiration: https://www.quora.com/In-JavaScript-how-can-I-click-a-button-that-only-appears-after-another-button-is-clicked
+   
+   /* Default in CSS=hidden. Hier wird Button onclick sichtbar gemacht */ 
+   document.querySelector('#btn1').addEventListener('click', showBtn); // Löst die Funktion ShowBtn aus
+    
+   function showBtn(e) { 
+      document.querySelector('#btn2').style.visibility = 'visible';  // setzt Btn auf sichtbar
+   }
 
 //-------- ENDE "Zum Spiel"-Button Logik ---------/
 

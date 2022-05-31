@@ -55,6 +55,10 @@ a:link, a:visited {
     background-color: var(--grey-button-color);
 }
 
+#btn2{
+visibility: hidden; /* Button im Login per Default hidden */
+}
+
 #saveBtn{
     background-color: var(--secondary-color);
     padding: 10px;
