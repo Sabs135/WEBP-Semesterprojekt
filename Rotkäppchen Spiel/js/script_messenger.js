@@ -12,7 +12,8 @@ post_form.addEventListener('submit', function(e) {
     var msg = document.getElementById('form_post_msg').value
     const input = document.querySelector('.typedMessage');
     const text = input.value.trim(); //leere Nachrichten entdecken & ignorieren
-
+    if(text !== ''){ //schauen ob Nachricht leer ist, wenn nein füge sie in der API ein
+        
     //API Fetch POST
     fetch('https://343505-26.web.fhgr.ch/api/jump-and-run/message/', {
         method: 'POST', 
@@ -42,10 +43,10 @@ post_form.addEventListener('submit', function(e) {
     .then(function(data) {console.log(data)})
     .catch(error => console.error('Error:', error)); 
 
-    if(text !== ''){ //Nachricht nach abschicken löschen
-        input.value = '';
-        input.focus(); 
-    }
+    
+}
+input.value = '';
+input.focus(); 
 });
 
 //-------------------- Laden der vergangenen Messages --------------------//
