@@ -3,11 +3,9 @@
 //----------------------------Start Definition Konstanten -----------------------------------//
 
 const username = document.getElementById('username');
-const saveScoreBtn = document.getElementById('saveScoreBtn');
 const finalScore = document.getElementById('finalScore');
 const mostRecentScore = parseInt(localStorage.getItem('mostRecentScore'));  /* beachte game.js wo mostRecentStore 2x gesetzt wird: win & lose */
 const highScoresList = document.getElementById("highScoresList");
-const highScores = JSON.parse(localStorage.getItem("highScores")) || []; /* wir schauen was in localstorage ist und geben das zurück, ODER wenn da nichts ist, soll ein leerer Array zurückkommen */
 var score = []; //hier werden die HighScores reingeschrieben
 var name_local = JSON.parse(localStorage.getItem("name")); //name von Local Storage nehmen
 var spielerid = localStorage.getItem("spielerid"); //spielerid von Local Storage nehmen
