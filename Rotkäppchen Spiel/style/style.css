@@ -31,10 +31,6 @@ header {
     font-family: var(--main-font);
     color: var(--black-text-color);}
 
-    /* TODO  --- Wofür ist hr? */
-hr {
-    background-color: var(--black-button-color);
-}
 
 /* Buttons und Links (ausser Messenger) */ 
 a:link, a:visited {
